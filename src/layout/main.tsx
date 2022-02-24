@@ -2,34 +2,26 @@ import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { Theme } from '@mui/material/styles';
 import { Box, Container } from '@mui/material';
-import Toobar from '../components/dashboardLayout/toolbar';
+import Toobar from '../components/layout/toolbar';
 interface StyleProps {
   theme?: Theme;
 }
 
-const MyContext = styled.div``;
 const Wrapper = styled(Box)<StyleProps>`
-  background: ${({ theme }) => theme.palette.grey[300]};
   min-height: 100vh;
-  ${MyContext} {
-    background-color: yellow;
-  }
 `;
 
 interface Props {
   children: ReactNode;
 }
 
-function Dashboard({ children }: Props) {
+function Main({ children }: Props) {
   return (
     <Wrapper>
       <Toobar />
-      <Container>
-        {children}
-        <MyContext>I Love React/Next</MyContext>
-      </Container>
+      <Container>{children}</Container>
     </Wrapper>
   );
 }
 
-export default Dashboard;
+export default Main;
