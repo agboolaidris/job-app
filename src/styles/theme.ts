@@ -1,6 +1,9 @@
 import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
+  typography: {
+    fontFamily: ['Overpass Mono', ' monospace', 'sans-serif'].join(','),
+  },
   colors: {
     primary: {
       dark: '#F4F3F3',
