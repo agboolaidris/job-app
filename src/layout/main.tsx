@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { Theme } from '@mui/material/styles';
 import { Box, Container } from '@mui/material';
-import Toobar from '../components/dashboardLayout/toolbar';
+import Toobar from '../components/layout/toolbar';
 interface StyleProps {
   theme?: Theme;
 }
@@ -15,7 +15,7 @@ interface Props {
   children: ReactNode;
 }
 
-function Dashboard({ children }: Props) {
+function Main({ children }: Props) {
   return (
     <Wrapper>
       <Toobar />
@@ -24,4 +24,4 @@ function Dashboard({ children }: Props) {
   );
 }
 
-export default Dashboard;
+export default Main;

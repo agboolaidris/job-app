@@ -1,4 +1,4 @@
-import Dashboard from '../layout/dashboard';
-const Home = () => <Dashboard>Hellow WORLD!!!!!!!!!!!!!!!!!!!!!!</Dashboard>;
+import Main from '../layout/main';
+const Home = () => <Main>Hellow WORLD!!!!!!!!!!!!!!!!!!!!!!</Main>;
 
 export default Home;
