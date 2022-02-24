@@ -7,13 +7,8 @@ interface StyleProps {
   theme?: Theme;
 }
 
-const MyContext = styled.div``;
 const Wrapper = styled(Box)<StyleProps>`
-  background: ${({ theme }) => theme.palette.grey[300]};
   min-height: 100vh;
-  ${MyContext} {
-    background-color: yellow;
-  }
 `;
 
 interface Props {
@@ -24,10 +19,7 @@ function Dashboard({ children }: Props) {
   return (
     <Wrapper>
       <Toobar />
-      <Container>
-        {children}
-        <MyContext>I Love React/Next</MyContext>
-      </Container>
+      <Container>{children}</Container>
     </Wrapper>
   );
 }

@@ -1,9 +1,15 @@
 import { createTheme } from '@mui/material/styles';
-import { red } from '@mui/material/colors';
 
 const theme = createTheme({
   colors: {
-    main: {},
+    primary: {
+      dark: '#F4F3F3',
+      main: '#ffffff',
+    },
+    secondary: {
+      main: '#000000',
+      light: '#222831',
+    },
   },
 });
 declare module '@mui/material/styles' {
@@ -11,6 +17,11 @@ declare module '@mui/material/styles' {
     colors: {
       primary: {
         main: string;
+        dark?: string;
+      };
+      secondary?: {
+        main?: string;
+        light?: string;
       };
     };
   }
@@ -18,7 +29,12 @@ declare module '@mui/material/styles' {
   interface ThemeOptions {
     colors?: {
       primary?: {
-        main?;
+        main?: string;
+        dark?: string;
+      };
+      secondary?: {
+        main?: string;
+        light?: string;
       };
     };
   }
