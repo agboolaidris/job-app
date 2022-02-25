@@ -9,6 +9,7 @@ const AppBar = styled.nav<{ theme?: Theme }>`
   align-items: center;
   justify-content: space-between;
   padding: 0 min(5%, 30px);
+  position: relative;
   .logo {
     text-decoration: none;
     font-size: 1.5rem;

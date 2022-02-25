@@ -1,27 +1,56 @@
-import React, { ReactNode, useState } from 'react';
-import MuiMenuItem from '@mui/material/MenuItem';
-import MUIMenu from '@mui/material/Menu';
-import { Divider, Avatar } from '@mui/material';
+import React, { ReactNode, useState, useRef, useEffect } from 'react';
 import styled from '@emotion/styled';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import Logout from '@mui/icons-material/Logout';
 
 const MenuItemStyled = styled.a``;
-const MenuItemDropDown = styled.div`
+const MenuItemDropDown = styled.div<{ open: boolean; color?: string }>`
   width: 100%;
-  height: 300px;
-  background-color: red;
+  // height: 300px;
+  background-color: ${({ color }) => (color ? color : 'red')};
   position: absolute;
+  top: 80px;
   left: 0;
+  height: ${({ open }) => (open ? '300px' : '0px')};
+  transition: all 0.3 ease-out;
+  overflow: hidden;
 `;
 
 interface MenuItemProps {
   children: ReactNode;
+  color?: string;
 }
-export const MenuItem = ({ children }: MenuItemProps) => {
+export const MenuItem = ({ children, color }: MenuItemProps) => {
+  const [open, setopen] = useState(false);
+  //   const ref = useRef(null);
+
+  //   useEffect(() => {
+  //     /**
+  //      * Alert if clicked on outside of element
+  //      */
+  //     function handleClickOutside(event) {
+  //       if (ref.current && !ref.current.contains(event.target)) {
+  //         console.log('hhhhh');
+  //         setopen(false);
+  //       } else {
+  //         setopen(true);
+  //       }
+  //     }
+
+  //     // Bind the event listener
+  //     document.addEventListener('mousedown', handleClickOutside);
+  //     return () => {
+  //       // Unbind the event listener on clean up
+  //       document.removeEventListener('mousedown', handleClickOutside);
+  //     };
+  //   }, [ref, open]);
+
   return (
     <>
-      <MenuItemStyled>{children}</MenuItemStyled>
+      <MenuItemStyled onMouseOver={() => setopen(true)} o>
+        {children}
+      </MenuItemStyled>
+      <MenuItemDropDown open={open} color={color}>
+        <h1>{children}</h1>
+      </MenuItemDropDown>
     </>
   );
 };
@@ -47,7 +76,7 @@ const MenuWrapper = styled.div`
 export function Menu() {
   return (
     <MenuWrapper>
-      <MenuItem>Men</MenuItem>
+      <MenuItem color="#070">Men</MenuItem>
       <MenuItem>Women</MenuItem>
       <MenuItem>Unisex</MenuItem>
       <MenuItem>Brand</MenuItem>
