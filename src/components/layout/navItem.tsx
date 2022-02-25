@@ -1,5 +1,6 @@
-import React, { ReactNode, useState, useRef, useEffect } from 'react';
+import React, { ReactNode, useState } from 'react';
 import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 
 const MenuItemStyled = styled.a``;
 const MenuItemDropDown = styled.div<{ open: boolean; color?: string }>`
@@ -9,9 +10,16 @@ const MenuItemDropDown = styled.div<{ open: boolean; color?: string }>`
   position: absolute;
   top: 80px;
   left: 0;
-  height: ${({ open }) => (open ? '300px' : '0px')};
+  height: 0px;
   transition: all 0.3 ease-out;
   overflow: hidden;
+
+  ${({ open }) =>
+    open &&
+    css`
+      padding: 10px min(5%, 30px);
+      height: max-content;
+    `}
 `;
 
 interface MenuItemProps {
@@ -19,36 +27,22 @@ interface MenuItemProps {
   color?: string;
 }
 export const MenuItem = ({ children, color }: MenuItemProps) => {
-  const [open, setopen] = useState(false);
-  //   const ref = useRef(null);
+  const [expanded, setExpanded] = useState(false);
 
-  //   useEffect(() => {
-  //     /**
-  //      * Alert if clicked on outside of element
-  //      */
-  //     function handleClickOutside(event) {
-  //       if (ref.current && !ref.current.contains(event.target)) {
-  //         console.log('hhhhh');
-  //         setopen(false);
-  //       } else {
-  //         setopen(true);
-  //       }
-  //     }
+  function expand() {
+    setExpanded(true);
+  }
 
-  //     // Bind the event listener
-  //     document.addEventListener('mousedown', handleClickOutside);
-  //     return () => {
-  //       // Unbind the event listener on clean up
-  //       document.removeEventListener('mousedown', handleClickOutside);
-  //     };
-  //   }, [ref, open]);
+  function close() {
+    setExpanded(false);
+  }
 
   return (
     <>
-      <MenuItemStyled onMouseOver={() => setopen(true)} o>
+      <MenuItemStyled tabIndex={0} onFocus={expand} onBlur={close}>
         {children}
       </MenuItemStyled>
-      <MenuItemDropDown open={open} color={color}>
+      <MenuItemDropDown open={expanded} color={color}>
         <h1>{children}</h1>
       </MenuItemDropDown>
     </>
