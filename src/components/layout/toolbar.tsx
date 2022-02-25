@@ -7,6 +7,7 @@ const AppBar = styled.nav<{ theme?: Theme }>`
   height: 80px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 0 min(5%, 30px);
   .logo {
     text-decoration: none;
@@ -22,13 +23,11 @@ function Index() {
       <Box>
         <Menu />
       </Box>
-      <Box sx={{ flexGrow: 1 }} />
 
       <Link href="/">
         <a className="logo">_IRIS_</a>
       </Link>
 
-      <Box sx={{ flexGrow: 1 }} />
       <Box>HHHHHH</Box>
     </AppBar>
   );
