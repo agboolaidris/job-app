@@ -84,9 +84,19 @@ const MenuItemDropDown = styled.div<{ open: boolean; theme?: Theme }>`
 `;
 
 interface MenuItemProps {
-  children: ReactNode;
+  name: string;
+  categories?: string[];
+  trends?: string[];
+  brands?: string[];
+  popular_products?: { name: string; url: string }[];
 }
-export const MenuItem = ({ children }: MenuItemProps) => {
+export const MenuItem = ({
+  name,
+  categories,
+  trends,
+  brands,
+  popular_products,
+}: MenuItemProps) => {
   const [expanded, setExpanded] = useState(false);
 
   function expand() {
@@ -99,62 +109,58 @@ export const MenuItem = ({ children }: MenuItemProps) => {
 
   return (
     <MenuItemStyled tabIndex={0} onFocus={expand} onBlur={close}>
-      <span>{children}</span>
+      <span>{name}</span>
       <MenuItemDropDown open={expanded}>
         <div className="start-flex">
-          <ul>
-            <li>
-              <Link href="/men">
-                <a>All Men</a>
-              </Link>
-            </li>
-            <li>New Arrivals</li>
-            <li>Men Sale</li>
-          </ul>
-          <ul>
-            <li className="title">Collections</li>
-            <li>T-shirt</li>
-            <li>Outerwear</li>
-            <li>T-shirt</li>
-            <li>Outerwear</li>
-          </ul>
-          <ul>
-            <li className="title">All Men</li>
-            <li>New Arrivals</li>
-            <li>Men Sale</li>
-          </ul>
+          {trends && (
+            <ul>
+              {trends.map((trend, i) => (
+                <li key={i}>
+                  <Link href="/men">
+                    <a>{trend}</a>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
+          {categories && (
+            <ul>
+              <li className="title">Categories</li>
+              {categories.map((category, i) => (
+                <li key={i}>
+                  <Link href="/men">
+                    <a>{category}</a>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
+          {brands && (
+            <ul>
+              <li className="title">Brands</li>
+              {brands.map((brand, i) => (
+                <li key={i}>
+                  <Link href="/men">
+                    <a>{brand}</a>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
         <div className="end-flex">
-          <div className="imgBox">
-            <Image
-              src="/jacket.jpg"
-              layout="intrinsic"
-              alt="jjj"
-              width={200}
-              height={200}
-            />
-            <span>HHHH</span>
-          </div>
-          <div className="imgBox">
-            <Image
-              src="/jacket.jpg"
-              layout="intrinsic"
-              alt="jjj"
-              width="200px"
-              height="200px"
-            />
-            <span>HHHH</span>
-          </div>
-          <div className="imgBox">
-            <Image
-              src="/jacket.jpg"
-              layout="intrinsic"
-              alt="jjj"
-              width="200px"
-              height="200px"
-            />
-            <span>HHHH</span>
-          </div>
+          {popular_products.map((product, i) => (
+            <div className="imgBox" key={i}>
+              <Image
+                src={product.url}
+                layout="intrinsic"
+                alt="jjj"
+                width={200}
+                height={200}
+              />
+              <span>{product.name}</span>
+            </div>
+          ))}
         </div>
       </MenuItemDropDown>
     </MenuItemStyled>
@@ -167,13 +173,6 @@ const MenuWrapper = styled.div`
   align-items: center;
 `;
 
-export function Menu() {
-  return (
-    <MenuWrapper>
-      <MenuItem>Men</MenuItem>
-      <MenuItem>Women</MenuItem>
-      <MenuItem>Unisex</MenuItem>
-      <MenuItem>Brand</MenuItem>
-    </MenuWrapper>
-  );
+export function Menu({ children }: { children: ReactNode }) {
+  return <MenuWrapper>{children}</MenuWrapper>;
 }

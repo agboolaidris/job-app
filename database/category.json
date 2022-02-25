@@ -1,0 +1,81 @@
+[
+  {
+    "name": "Men",
+    "categories": ["T-shirt", "Outter-wear"],
+    "brands": ["Nike", "Addidas", ""],
+    "trends": ["All", "New Arrival", "Men sale"],
+    "popular_product": [
+      {
+        "name": "Graphic T-shirt",
+        "url": "/jacket.jpg"
+      },
+      {
+        "name": "Tie",
+        "url": "/jacket.jpg"
+      },
+      {
+        "name": "Jewellery",
+        "url": "/jacket.jpg"
+      }
+    ]
+  },
+  {
+    "name": "Women",
+    "categories": ["T-shirt", "Outter-wear"],
+    "brands": ["Nike", "Addidas", ""],
+    "trends": ["All", "New Arrival", "Women sale"],
+    "popular_product": [
+      {
+        "name": "Graphic T-shirt",
+        "url": "/jacket.jpg"
+      },
+      {
+        "name": "Tie",
+        "url": "/jacket.jpg"
+      },
+      {
+        "name": "Jewellery",
+        "url": "/jacket.jpg"
+      }
+    ]
+  },
+  {
+    "name": "Unisex",
+    "categories": ["T-shirt", "Outter-wear"],
+    "brands": ["Nike", "Addidas", ""],
+    "trends": ["All", "New Arrival", "Most sale"],
+    "popular_product": [
+      {
+        "name": "Graphic T-shirt",
+        "url": "/jacket.jpg"
+      },
+      {
+        "name": "Tie",
+        "url": "/jacket.jpg"
+      },
+      {
+        "name": "Jewellery",
+        "url": "/jacket.jpg"
+      }
+    ]
+  },
+  {
+    "name": "Brand",
+    "brands": ["Nike", "Addidas", ""],
+    "trends": ["All", "New Arrival", "Men sale"],
+    "popular_product": [
+      {
+        "name": "Graphic T-shirt",
+        "url": "/jacket.jpg"
+      },
+      {
+        "name": "Tie",
+        "url": "/jacket.jpg"
+      },
+      {
+        "name": "Jewellery",
+        "url": "/jacket.jpg"
+      }
+    ]
+  }
+]
