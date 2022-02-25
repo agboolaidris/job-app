@@ -1,32 +1,92 @@
 import React, { ReactNode, useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
+import { Theme } from '@mui/material';
 
-const MenuItemStyled = styled.a``;
-const MenuItemDropDown = styled.div<{ open: boolean; color?: string }>`
+const MenuItemStyled = styled.div`
+  margin-right: 20px;
+  & > span {
+    font-size: 0.8rem;
+    opacity: 0.7;
+    cursor: pointer;
+    &:hover {
+      font-weight: bolder;
+      opacity: 1;
+    }
+  }
+`;
+
+const MenuItemDropDown = styled.div<{ open: boolean; theme?: Theme }>`
   width: 100%;
-  // height: 300px;
-  background-color: ${({ color }) => (color ? color : 'red')};
+  background-color: ${({ theme }) => theme.colors.primary.dark};
   position: absolute;
   top: 80px;
   left: 0;
   height: 0px;
   transition: all 0.3 ease-out;
   overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  .start-flex {
+    display: flex;
+
+    ul {
+      list-style: none;
+      padding-inline-start: 0px;
+      margin-right: 40px;
+      &:first-of-type {
+        margin-top: 30px;
+      }
+      li {
+        font-size: 0.8rem;
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+        }
+        a {
+          text-decoration: none;
+          color: ${({ theme }) => theme.colors.secondary.main};
+        }
+      }
+      .title {
+        font-weight: bolder;
+        margin-bottom: 10px;
+        text-decoration: none !important;
+      }
+    }
+  }
+  .end-flex {
+    display: flex;
+    width: 700px;
+    max-width: 70%;
+    .imgBox {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      margin-left: 20px;
+      width: 33.3%;
+      span {
+        margin-top: 10px;
+        font-size: 0.8rem;
+        font-weight: bolder;
+      }
+    }
+  }
 
   ${({ open }) =>
     open &&
     css`
-      padding: 10px min(5%, 30px);
+      padding: 20px min(5%, 30px);
       height: max-content;
-    `}
+    `};
 `;
 
 interface MenuItemProps {
   children: ReactNode;
-  color?: string;
 }
-export const MenuItem = ({ children, color }: MenuItemProps) => {
+export const MenuItem = ({ children }: MenuItemProps) => {
   const [expanded, setExpanded] = useState(false);
 
   function expand() {
@@ -38,39 +98,79 @@ export const MenuItem = ({ children, color }: MenuItemProps) => {
   }
 
   return (
-    <>
-      <MenuItemStyled tabIndex={0} onFocus={expand} onBlur={close}>
-        {children}
-      </MenuItemStyled>
-      <MenuItemDropDown open={expanded} color={color}>
-        <h1>{children}</h1>
+    <MenuItemStyled tabIndex={0} onFocus={expand} onBlur={close}>
+      <span>{children}</span>
+      <MenuItemDropDown open={expanded}>
+        <div className="start-flex">
+          <ul>
+            <li>
+              <Link href="/men">
+                <a>All Men</a>
+              </Link>
+            </li>
+            <li>New Arrivals</li>
+            <li>Men Sale</li>
+          </ul>
+          <ul>
+            <li className="title">Collections</li>
+            <li>T-shirt</li>
+            <li>Outerwear</li>
+            <li>T-shirt</li>
+            <li>Outerwear</li>
+          </ul>
+          <ul>
+            <li className="title">All Men</li>
+            <li>New Arrivals</li>
+            <li>Men Sale</li>
+          </ul>
+        </div>
+        <div className="end-flex">
+          <div className="imgBox">
+            <Image
+              src="/jacket.jpg"
+              layout="intrinsic"
+              alt="jjj"
+              width={200}
+              height={200}
+            />
+            <span>HHHH</span>
+          </div>
+          <div className="imgBox">
+            <Image
+              src="/jacket.jpg"
+              layout="intrinsic"
+              alt="jjj"
+              width="200px"
+              height="200px"
+            />
+            <span>HHHH</span>
+          </div>
+          <div className="imgBox">
+            <Image
+              src="/jacket.jpg"
+              layout="intrinsic"
+              alt="jjj"
+              width="200px"
+              height="200px"
+            />
+            <span>HHHH</span>
+          </div>
+        </div>
       </MenuItemDropDown>
-    </>
+    </MenuItemStyled>
   );
 };
 
 // The Menu Wrapper
 const MenuWrapper = styled.div`
   display: flex;
-  cursor: pointer;
-  ${MenuItemStyled} {
-    margin-left: 20px;
-    font-size: 0.8rem;
-    opacity: 0.7;
-    &:first-child {
-      margin-left: 0;
-    }
-    &:hover {
-      font-weight: bolder;
-      opacity: 1;
-    }
-  }
+  align-items: center;
 `;
 
 export function Menu() {
   return (
     <MenuWrapper>
-      <MenuItem color="#070">Men</MenuItem>
+      <MenuItem>Men</MenuItem>
       <MenuItem>Women</MenuItem>
       <MenuItem>Unisex</MenuItem>
       <MenuItem>Brand</MenuItem>

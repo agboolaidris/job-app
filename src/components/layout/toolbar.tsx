@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Box, Theme } from '@mui/material';
 import styled from '@emotion/styled';
 import { Menu } from './navItem';
+
 const AppBar = styled.nav<{ theme?: Theme }>`
   height: 80px;
   display: flex;
