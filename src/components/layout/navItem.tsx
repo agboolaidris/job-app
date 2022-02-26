@@ -1,9 +1,9 @@
-import React, { ReactNode, useState } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { Theme } from '@mui/material';
+import { Link } from '../shared/link';
 
 const MenuItemStyled = styled.div`
   margin-right: 20px;
@@ -42,21 +42,20 @@ const MenuItemDropDown = styled.div<{ open: boolean; theme?: Theme }>`
       li {
         font-size: 0.8rem;
         cursor: pointer;
+        opacity: 0.8;
         &:hover {
           text-decoration: underline;
-        }
-        a {
-          text-decoration: none;
-          color: ${({ theme }) => theme.colors.secondary.main};
         }
       }
       .title {
         font-weight: bolder;
+        opacity: 1 !important;
         margin-bottom: 10px;
         text-decoration: none !important;
       }
     }
   }
+
   .end-flex {
     display: flex;
     width: 700px;
@@ -90,6 +89,7 @@ interface MenuItemProps {
   brands?: string[];
   popular_products?: { name: string; url: string }[];
 }
+
 export const MenuItem = ({
   name,
   categories,
@@ -116,9 +116,7 @@ export const MenuItem = ({
             <ul>
               {trends.map((trend, i) => (
                 <li key={i}>
-                  <Link href="/men">
-                    <a>{trend}</a>
-                  </Link>
+                  <Link href="/men">{trend}</Link>
                 </li>
               ))}
             </ul>
@@ -128,9 +126,7 @@ export const MenuItem = ({
               <li className="title">Categories</li>
               {categories.map((category, i) => (
                 <li key={i}>
-                  <Link href="/men">
-                    <a>{category}</a>
-                  </Link>
+                  <Link href="/men">{category}</Link>
                 </li>
               ))}
             </ul>
@@ -140,9 +136,7 @@ export const MenuItem = ({
               <li className="title">Brands</li>
               {brands.map((brand, i) => (
                 <li key={i}>
-                  <Link href="/men">
-                    <a>{brand}</a>
-                  </Link>
+                  <Link href="/men">{brand}</Link>
                 </li>
               ))}
             </ul>
@@ -168,11 +162,7 @@ export const MenuItem = ({
 };
 
 // The Menu Wrapper
-const MenuWrapper = styled.div`
+export const Menu = styled.div`
   display: flex;
   align-items: center;
 `;
-
-export function Menu({ children }: { children: ReactNode }) {
-  return <MenuWrapper>{children}</MenuWrapper>;
-}

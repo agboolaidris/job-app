@@ -1,8 +1,9 @@
 import React from 'react';
-import Link from 'next/link';
 import { Box, Theme } from '@mui/material';
 import styled from '@emotion/styled';
 import { Menu, MenuItem } from './navItem';
+import { CurrencyDropDown } from '../shared/currencydropdown';
+import { Link } from '../shared/link';
 import categoriesDB from '../../../database/category.json';
 
 const AppBar = styled.nav<{ theme?: Theme }>`
@@ -39,10 +40,19 @@ function Index() {
       </Box>
 
       <Link href="/">
-        <a className="logo">_IRIS_</a>
+        <span className="logo">_IRIS_</span>
       </Link>
 
-      <Box>HHHHHH</Box>
+      <Box>
+        <Menu>
+          <CurrencyDropDown name="USD" />
+          <Link href="/login">Account </Link>
+
+          <Link href="/login" sx={{ marginLeft: 3 }}>
+            Cart (0)
+          </Link>
+        </Menu>
+      </Box>
     </AppBar>
   );
 }
