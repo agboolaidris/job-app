@@ -1,9 +1,33 @@
 import React, { ReactNode, useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+import NextLink from 'next/link';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { Theme } from '@mui/material';
+
+const LinkStyled = styled.a<{ theme?: Theme }>`
+  font-size: 0.8rem;
+  opacity: 0.7;
+  color: ${({ theme }) => theme.colors.secondary.main};
+  cursor: pointer;
+  &:hover {
+    font-weight: bolder;
+    opacity: 1;
+  }
+`;
+
+interface LinkProps {
+  children: ReactNode;
+  href: string;
+}
+
+export const Link = ({ children, href }: LinkProps) => {
+  return (
+    <NextLink href={href}>
+      <LinkStyled>{children}</LinkStyled>
+    </NextLink>
+  );
+};
 
 const MenuItemStyled = styled.div`
   margin-right: 20px;
@@ -46,10 +70,6 @@ const MenuItemDropDown = styled.div<{ open: boolean; theme?: Theme }>`
         &:hover {
           text-decoration: underline;
         }
-        a {
-          text-decoration: none;
-          color: ${({ theme }) => theme.colors.secondary.main};
-        }
       }
       .title {
         font-weight: bolder;
@@ -59,6 +79,7 @@ const MenuItemDropDown = styled.div<{ open: boolean; theme?: Theme }>`
       }
     }
   }
+
   .end-flex {
     display: flex;
     width: 700px;
@@ -118,9 +139,7 @@ export const MenuItem = ({
             <ul>
               {trends.map((trend, i) => (
                 <li key={i}>
-                  <Link href="/men">
-                    <a>{trend}</a>
-                  </Link>
+                  <Link href="/men">{trend}</Link>
                 </li>
               ))}
             </ul>
@@ -130,9 +149,7 @@ export const MenuItem = ({
               <li className="title">Categories</li>
               {categories.map((category, i) => (
                 <li key={i}>
-                  <Link href="/men">
-                    <a>{category}</a>
-                  </Link>
+                  <Link href="/men">{category}</Link>
                 </li>
               ))}
             </ul>
@@ -142,9 +159,7 @@ export const MenuItem = ({
               <li className="title">Brands</li>
               {brands.map((brand, i) => (
                 <li key={i}>
-                  <Link href="/men">
-                    <a>{brand}</a>
-                  </Link>
+                  <Link href="/men">{brand}</Link>
                 </li>
               ))}
             </ul>
@@ -169,14 +184,8 @@ export const MenuItem = ({
   );
 };
 
-//export const L
-
 // The Menu Wrapper
-const MenuWrapper = styled.div`
+export const Menu = styled.div`
   display: flex;
   align-items: center;
 `;
-
-export function Menu({ children }: { children: ReactNode }) {
-  return <MenuWrapper>{children}</MenuWrapper>;
-}
