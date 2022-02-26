@@ -1,8 +1,7 @@
 import React from 'react';
-import Link from 'next/link';
 import { Box, Theme } from '@mui/material';
 import styled from '@emotion/styled';
-import { Menu, MenuItem } from './navItem';
+import { Menu, MenuItem, Link } from './navItem';
 import categoriesDB from '../../../database/category.json';
 
 const AppBar = styled.nav<{ theme?: Theme }>`
@@ -39,21 +38,13 @@ function Index() {
       </Box>
 
       <Link href="/">
-        <a className="logo">_IRIS_</a>
+        <span className="logo">_IRIS_</span>
       </Link>
 
       <Box>
         <Menu>
-          {categoriesDB.map((category, i) => (
-            <MenuItem
-              key={i}
-              name={category.name}
-              categories={category.categories}
-              brands={category.brands}
-              trends={category.trends}
-              popular_products={category.popular_product}
-            />
-          ))}
+          <Link href="/login">Account </Link>
+          <Link href="##">Account </Link>
         </Menu>
       </Box>
     </AppBar>
