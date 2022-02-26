@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, Theme } from '@mui/material';
+
 import styled from '@emotion/styled';
 import { Menu, MenuItem, Link } from './navItem';
 import categoriesDB from '../../../database/category.json';
