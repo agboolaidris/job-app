@@ -17,10 +17,12 @@ interface Props {
 }
 
 function Main({ children }: Props) {
+  const TEXTS = ['Forest', 'Building', 'Tree', 'Color'];
+
   return (
     <Wrapper>
       <Toobar />
-      <InfoLine />
+      <InfoLine Texts={TEXTS} />
       <Container>{children}</Container>
     </Wrapper>
   );
