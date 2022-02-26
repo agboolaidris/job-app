@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { Theme } from '@mui/material/styles';
 import { Box, Container } from '@mui/material';
 import Toobar from '../components/layout/toolbar';
+import InfoLine from '../components/shared/infoLine';
 interface StyleProps {
   theme?: Theme;
 }
@@ -19,6 +20,7 @@ function Main({ children }: Props) {
   return (
     <Wrapper>
       <Toobar />
+      <InfoLine />
       <Container>{children}</Container>
     </Wrapper>
   );
