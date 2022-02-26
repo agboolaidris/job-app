@@ -42,6 +42,7 @@ const MenuItemDropDown = styled.div<{ open: boolean; theme?: Theme }>`
       li {
         font-size: 0.8rem;
         cursor: pointer;
+        opacity: 0.8;
         &:hover {
           text-decoration: underline;
         }
@@ -52,6 +53,7 @@ const MenuItemDropDown = styled.div<{ open: boolean; theme?: Theme }>`
       }
       .title {
         font-weight: bolder;
+        opacity: 1 !important;
         margin-bottom: 10px;
         text-decoration: none !important;
       }
@@ -166,6 +168,8 @@ export const MenuItem = ({
     </MenuItemStyled>
   );
 };
+
+//export const L
 
 // The Menu Wrapper
 const MenuWrapper = styled.div`

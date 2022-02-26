@@ -42,7 +42,20 @@ function Index() {
         <a className="logo">_IRIS_</a>
       </Link>
 
-      <Box>HHHHHH</Box>
+      <Box>
+        <Menu>
+          {categoriesDB.map((category, i) => (
+            <MenuItem
+              key={i}
+              name={category.name}
+              categories={category.categories}
+              brands={category.brands}
+              trends={category.trends}
+              popular_products={category.popular_product}
+            />
+          ))}
+        </Menu>
+      </Box>
     </AppBar>
   );
 }
