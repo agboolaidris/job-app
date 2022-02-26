@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import Image from 'next/image';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { Theme } from '@mui/material';
-import { Link } from '../shared/link';
 
 const MenuItemStyled = styled.div`
   margin-right: 20px;
@@ -82,21 +80,10 @@ const MenuItemDropDown = styled.div<{ open: boolean; theme?: Theme }>`
     `};
 `;
 
-interface MenuItemProps {
+interface DropDownMenuProps {
   name: string;
-  categories?: string[];
-  trends?: string[];
-  brands?: string[];
-  popular_products?: { name: string; url: string }[];
 }
-
-export const MenuItem = ({
-  name,
-  categories,
-  trends,
-  brands,
-  popular_products,
-}: MenuItemProps) => {
+export const CurrencyDropDown = ({ name }: DropDownMenuProps) => {
   const [expanded, setExpanded] = useState(false);
 
   function expand() {
@@ -106,63 +93,10 @@ export const MenuItem = ({
   function close() {
     setExpanded(false);
   }
-
   return (
     <MenuItemStyled tabIndex={0} onFocus={expand} onBlur={close}>
       <span>{name}</span>
-      <MenuItemDropDown open={expanded}>
-        <div className="start-flex">
-          {trends && (
-            <ul>
-              {trends.map((trend, i) => (
-                <li key={i}>
-                  <Link href="/men">{trend}</Link>
-                </li>
-              ))}
-            </ul>
-          )}
-          {categories && (
-            <ul>
-              <li className="title">Categories</li>
-              {categories.map((category, i) => (
-                <li key={i}>
-                  <Link href="/men">{category}</Link>
-                </li>
-              ))}
-            </ul>
-          )}
-          {brands && (
-            <ul>
-              <li className="title">Brands</li>
-              {brands.map((brand, i) => (
-                <li key={i}>
-                  <Link href="/men">{brand}</Link>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-        <div className="end-flex">
-          {popular_products.map((product, i) => (
-            <div className="imgBox" key={i}>
-              <Image
-                src={product.url}
-                layout="intrinsic"
-                alt="jjj"
-                width={200}
-                height={200}
-              />
-              <span>{product.name}</span>
-            </div>
-          ))}
-        </div>
-      </MenuItemDropDown>
+      <MenuItemDropDown open={expanded}>name</MenuItemDropDown>
     </MenuItemStyled>
   );
 };
-
-// The Menu Wrapper
-export const Menu = styled.div`
-  display: flex;
-  align-items: center;
-`;
