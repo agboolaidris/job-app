@@ -22,6 +22,23 @@ const AppBar = styled.nav<{ theme?: Theme }>`
 `;
 
 function Index() {
+  const currencies = [
+    {
+      unit: 'USD',
+      name: 'United state',
+      symbol: '$',
+    },
+    {
+      unit: 'NGR',
+      name: 'Nigeria Naira',
+      symbol: '#',
+    },
+    {
+      unit: 'EURO',
+      name: 'Europe',
+      symbol: 'E',
+    },
+  ];
   return (
     <AppBar>
       <Box>
@@ -45,7 +62,7 @@ function Index() {
 
       <Box>
         <Menu>
-          <CurrencyDropDown name="USD" />
+          <CurrencyDropDown currencies={currencies} />
           <Link href="/login">Account </Link>
 
           <Link href="/login" sx={{ marginLeft: 3 }}>

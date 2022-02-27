@@ -29,6 +29,7 @@ const MenuItemDropDown = styled.div<{ open: boolean; theme?: Theme }>`
   overflow: hidden;
   display: flex;
   justify-content: space-between;
+  z-index: 20;
   .start-flex {
     display: flex;
 

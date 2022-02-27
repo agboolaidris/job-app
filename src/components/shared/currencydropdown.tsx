@@ -19,7 +19,7 @@ const MenuItemStyled = styled.div`
 
 const MenuItemDropDown = styled.div<{ open: boolean; theme?: Theme }>`
   min-width: 150px;
-  background-color: ${({ theme }) => theme.colors.primary.dark};
+  background-color: ${({ theme }) => theme.colors.primary.main};
   position: absolute;
   top: 30px;
   left: 0;
@@ -28,20 +28,40 @@ const MenuItemDropDown = styled.div<{ open: boolean; theme?: Theme }>`
   overflow: hidden;
   display: flex;
   justify-content: space-between;
-
+  z-index: 10;
   ${({ open }) =>
     open &&
     css`
-      padding: 10px;
       height: max-content;
     `};
+  ul {
+    font-size: 0.8rem;
+    list-style: none;
+    padding-inline-start: 0px;
+    width: 100%;
+
+    li {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      cursor: pointer;
+      color: ${({ theme }) => theme.colors.secondary.main};
+      opacity: 0.8;
+      padding: 5px 10px;
+      &:hover {
+        opacity: 1;
+        font-weight: bolder;
+      }
+    }
+  }
 `;
 
 interface DropDownMenuProps {
-  name: string;
+  currencies: { unit: string; name: string; symbol: string }[];
 }
-export const CurrencyDropDown = ({ name }: DropDownMenuProps) => {
+export const CurrencyDropDown = ({ currencies }: DropDownMenuProps) => {
   const [expanded, setExpanded] = useState(false);
+  const [current, setcurrent] = useState(0);
 
   function expand() {
     setExpanded(true);
@@ -50,10 +70,24 @@ export const CurrencyDropDown = ({ name }: DropDownMenuProps) => {
   function close() {
     setExpanded(false);
   }
+  const handleChangeCurrency = (i: number) => {
+    setcurrent(i);
+    close();
+  };
   return (
     <MenuItemStyled tabIndex={0} onFocus={expand} onBlur={close}>
-      <span>{name}</span>
-      <MenuItemDropDown open={expanded}>name</MenuItemDropDown>
+      <span>
+        {currencies[current].symbol} {currencies[current].unit}
+      </span>
+      <MenuItemDropDown open={expanded}>
+        <ul>
+          {currencies.map((currency, i) => (
+            <li key={i} onClick={() => handleChangeCurrency(i)}>
+              <span>{currency.name}</span> <span>{currency.symbol}</span>
+            </li>
+          ))}
+        </ul>
+      </MenuItemDropDown>
     </MenuItemStyled>
   );
 };
