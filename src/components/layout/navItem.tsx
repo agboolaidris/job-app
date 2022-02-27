@@ -164,10 +164,10 @@ export const MenuItemDesktop = ({
   );
 };
 
-const MenuItemMobileStyled = styled.div`
+const MenuItemMobileStyled = styled.div<{ theme?: Theme }>`
   padding: 0 min(5%, 30px);
   .title {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
@@ -181,8 +181,8 @@ const MenuItemMobileStyled = styled.div`
   }
   .line {
     width: 100%;
-    height: 2px;
-    background: red;
+    height: 1px;
+    background: ${({ theme }) => theme.colors.secondary.light};
   }
 `;
 
