@@ -1,10 +1,12 @@
-import React from 'react';
-import { Box, Theme } from '@mui/material';
+import React, { useState } from 'react';
+import { Box, Theme, Badge, IconButton } from '@mui/material';
 import styled from '@emotion/styled';
 import { Menu, MenuItem } from './navItem';
 import { CurrencyDropDown } from '../shared/currencydropdown';
 import { Link } from '../shared/link';
 import categoriesDB from '../../../database/category.json';
+import { BarIcon, TimesIcon } from '../shared/bar';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
 const AppBar = styled.nav<{ theme?: Theme }>`
   height: 80px;
@@ -39,9 +41,16 @@ function Index() {
       symbol: 'E',
     },
   ];
+  const [openMobileMenu, setopenMobileMenu] = useState(false);
   return (
     <AppBar>
-      <Box>
+      <Box
+        sx={{ display: { md: 'none' } }}
+        onClick={() => setopenMobileMenu(!openMobileMenu)}
+      >
+        {openMobileMenu ? <TimesIcon /> : <BarIcon />}
+      </Box>
+      <Box sx={{ display: { xs: 'none', md: 'block' } }}>
         <Menu>
           {categoriesDB.map((category, i) => (
             <MenuItem
@@ -60,7 +69,7 @@ function Index() {
         <span className="logo">_IRIS_</span>
       </Link>
 
-      <Box>
+      <Box sx={{ display: { xs: 'none', md: 'block' } }}>
         <Menu>
           <CurrencyDropDown currencies={currencies} />
           <Link href="/login">Account </Link>
@@ -70,6 +79,12 @@ function Index() {
           </Link>
         </Menu>
       </Box>
+
+      <Link href="/" sx={{ display: { md: 'none' } }}>
+        <Badge badgeContent={12} color="error">
+          <ShoppingCartOutlinedIcon />
+        </Badge>
+      </Link>
     </AppBar>
   );
 }
