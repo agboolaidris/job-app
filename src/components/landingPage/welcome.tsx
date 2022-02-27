@@ -9,6 +9,9 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  h1 {
+    font-weight: bolder;
+  }
 `;
 interface Props {
   images: string[];
@@ -16,7 +19,9 @@ interface Props {
 function Welcome({ images }: Props) {
   return (
     <Wrapper>
-      <h1>Welcome TO _IRIS_ FASHION HOME</h1>
+      <div>
+        <h1>_IRIS_ Fashion Home</h1>
+      </div>
       <BackgroundSlider images={images} duration={8} transition={2} />
     </Wrapper>
   );

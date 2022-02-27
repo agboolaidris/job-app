@@ -7,10 +7,13 @@ const LineStyle = styled.div<{ theme?: Theme }>`
   width: 100%;
   background-color: ${({ theme }) => theme.colors.primary.dark};
   text-align: center;
-  padding: 5px;
+  height: 30px;
   font-size: 0.9rem;
   display: flex;
   justify-content: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 interface Props {
