@@ -1,11 +1,11 @@
-import React from 'react';
-import { Box, IconButton, Theme } from '@mui/material';
+import React, { useState } from 'react';
+import { Box, Theme } from '@mui/material';
 import styled from '@emotion/styled';
 import { Menu, MenuItem } from './navItem';
 import { CurrencyDropDown } from '../shared/currencydropdown';
 import { Link } from '../shared/link';
 import categoriesDB from '../../../database/category.json';
-import BarIcon from '../shared/bar';
+import { BarIcon, TimesIcon } from '../shared/bar';
 
 const AppBar = styled.nav<{ theme?: Theme }>`
   height: 80px;
@@ -40,11 +40,15 @@ function Index() {
       symbol: 'E',
     },
   ];
+  const [openMobileMenu, setopenMobileMenu] = useState(false);
   return (
     <AppBar>
-      <IconButton>
-        <BarIcon />
-      </IconButton>
+      <Box
+        sx={{ display: { md: 'none' } }}
+        onClick={() => setopenMobileMenu(!openMobileMenu)}
+      >
+        {openMobileMenu ? <TimesIcon /> : <BarIcon />}
+      </Box>
       <Box sx={{ display: { xs: 'none', md: 'block' } }}>
         <Menu>
           {categoriesDB.map((category, i) => (
