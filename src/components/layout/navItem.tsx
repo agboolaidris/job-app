@@ -91,7 +91,7 @@ interface MenuItemProps {
   popular_products?: { name: string; url: string }[];
 }
 
-export const MenuItem = ({
+export const MenuItemDesktop = ({
   name,
   categories,
   trends,
@@ -163,7 +163,13 @@ export const MenuItem = ({
 };
 
 // The Menu Wrapper
-export const Menu = styled.div`
+export const Menu = styled.div<{ open?: boolean; theme?: Theme }>`
   display: flex;
   align-items: center;
+  ${({ theme }) => theme.breakpoints.down('md')} {
+    position: fixed;
+    width: 100%;
+    background-color: red;
+    height: 300px;
+  }
 `;

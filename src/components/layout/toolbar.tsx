@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Box, Theme, Badge, IconButton } from '@mui/material';
+import { Box, Theme, Badge } from '@mui/material';
 import styled from '@emotion/styled';
-import { Menu, MenuItem } from './navItem';
+import { Menu, MenuItemDesktop } from './navItem';
 import { CurrencyDropDown } from '../shared/currencydropdown';
 import { Link } from '../shared/link';
 import categoriesDB from '../../../database/category.json';
@@ -50,10 +50,11 @@ function Index() {
       >
         {openMobileMenu ? <TimesIcon /> : <BarIcon />}
       </Box>
+
       <Box sx={{ display: { xs: 'none', md: 'block' } }}>
         <Menu>
           {categoriesDB.map((category, i) => (
-            <MenuItem
+            <MenuItemDesktop
               key={i}
               name={category.name}
               categories={category.categories}
