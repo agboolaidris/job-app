@@ -35,13 +35,26 @@ const MenuItemDropDown = styled.div<{ open: boolean; theme?: Theme }>`
       padding: 10px;
       height: max-content;
     `};
+  ul {
+    font-size: 0.9rem;
+    list-style: none;
+    background-color: blue;
+    li {
+      width: max-content;
+      display: flex;
+      justify-content: space-between;
+      background: red;
+      width: 100%;
+    }
+  }
 `;
 
 interface DropDownMenuProps {
-  name: string;
+  currencies: { unit: string; name: string; symbol: string }[];
 }
-export const CurrencyDropDown = ({ name }: DropDownMenuProps) => {
+export const CurrencyDropDown = ({ currencies }: DropDownMenuProps) => {
   const [expanded, setExpanded] = useState(false);
+  const [current, setcurrent] = useState(0);
 
   function expand() {
     setExpanded(true);
@@ -52,8 +65,18 @@ export const CurrencyDropDown = ({ name }: DropDownMenuProps) => {
   }
   return (
     <MenuItemStyled tabIndex={0} onFocus={expand} onBlur={close}>
-      <span>{name}</span>
-      <MenuItemDropDown open={expanded}>name</MenuItemDropDown>
+      <span>
+        {currencies[current].symbol} {currencies[current].unit}
+      </span>
+      <MenuItemDropDown open={expanded}>
+        <ul>
+          {currencies.map((currency, i) => (
+            <li key={i}>
+              <span>{currency.name}</span> <span>{currency.symbol}</span>
+            </li>
+          ))}
+        </ul>
+      </MenuItemDropDown>
     </MenuItemStyled>
   );
 };
