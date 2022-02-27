@@ -41,7 +41,7 @@ function Index() {
   ];
   return (
     <AppBar>
-      <Box>
+      <Box sx={{ display: { xs: 'none', md: 'block' } }}>
         <Menu>
           {categoriesDB.map((category, i) => (
             <MenuItem
@@ -60,7 +60,7 @@ function Index() {
         <span className="logo">_IRIS_</span>
       </Link>
 
-      <Box>
+      <Box sx={{ display: { xs: 'none', md: 'block' } }}>
         <Menu>
           <CurrencyDropDown currencies={currencies} />
           <Link href="/login">Account </Link>
