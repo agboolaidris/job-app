@@ -13,6 +13,7 @@ const LineStyle = styled.div<{ theme?: Theme }>`
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 `;
 
 interface Props {

@@ -28,6 +28,16 @@ function Index() {
       name: 'United state',
       symbol: '$',
     },
+    {
+      unit: 'NGR',
+      name: 'Nigeria Naira',
+      symbol: '#',
+    },
+    {
+      unit: 'EURO',
+      name: 'Europe',
+      symbol: 'E',
+    },
   ];
   return (
     <AppBar>

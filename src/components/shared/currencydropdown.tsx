@@ -32,19 +32,26 @@ const MenuItemDropDown = styled.div<{ open: boolean; theme?: Theme }>`
   ${({ open }) =>
     open &&
     css`
-      padding: 10px;
       height: max-content;
     `};
   ul {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     list-style: none;
-    background-color: blue;
+    padding-inline-start: 0px;
+    width: 100%;
+
     li {
-      width: max-content;
+      width: 100%;
       display: flex;
       justify-content: space-between;
-      background: red;
-      width: 100%;
+      cursor: pointer;
+      color: ${({ theme }) => theme.colors.secondary.main};
+      opacity: 0.8;
+      padding: 5px 10px;
+      &:hover {
+        opacity: 1;
+        font-weight: bolder;
+      }
     }
   }
 `;
@@ -63,6 +70,10 @@ export const CurrencyDropDown = ({ currencies }: DropDownMenuProps) => {
   function close() {
     setExpanded(false);
   }
+  const handleChangeCurrency = (i: number) => {
+    setcurrent(i);
+    close();
+  };
   return (
     <MenuItemStyled tabIndex={0} onFocus={expand} onBlur={close}>
       <span>
@@ -71,7 +82,7 @@ export const CurrencyDropDown = ({ currencies }: DropDownMenuProps) => {
       <MenuItemDropDown open={expanded}>
         <ul>
           {currencies.map((currency, i) => (
-            <li key={i}>
+            <li key={i} onClick={() => handleChangeCurrency(i)}>
               <span>{currency.name}</span> <span>{currency.symbol}</span>
             </li>
           ))}
