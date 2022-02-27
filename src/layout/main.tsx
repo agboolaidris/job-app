@@ -4,6 +4,7 @@ import { Theme } from '@mui/material/styles';
 import { Box } from '@mui/material';
 import Toobar from '../components/layout/toolbar';
 import InfoLine from '../components/shared/infoLine';
+
 interface StyleProps {
   theme?: Theme;
 }
@@ -21,7 +22,6 @@ function Main({ children }: Props) {
     'Free worldwide shipping on orders over $95.',
     'Subscribe for 15% off your first orde.',
     'Pay in 4 instalments with Sezzle.',
-    'Color',
   ];
 
   return (
