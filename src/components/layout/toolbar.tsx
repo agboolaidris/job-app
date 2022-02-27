@@ -86,6 +86,9 @@ function Index() {
           <ShoppingCartOutlinedIcon />
         </Badge>
       </Link>
+      <Menu open={openMobileMenu}>
+        <h1>JJJ</h1>
+      </Menu>
     </AppBar>
   );
 }

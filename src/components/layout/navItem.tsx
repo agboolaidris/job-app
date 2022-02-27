@@ -83,7 +83,7 @@ const MenuItemDropDown = styled.div<{ open: boolean; theme?: Theme }>`
     `};
 `;
 
-interface MenuItemProps {
+interface MenuItemDesktopProps {
   name: string;
   categories?: string[];
   trends?: string[];
@@ -97,7 +97,7 @@ export const MenuItemDesktop = ({
   trends,
   brands,
   popular_products,
-}: MenuItemProps) => {
+}: MenuItemDesktopProps) => {
   const [expanded, setExpanded] = useState(false);
 
   function expand() {
@@ -162,14 +162,21 @@ export const MenuItemDesktop = ({
   );
 };
 
+
+
+
 // The Menu Wrapper
 export const Menu = styled.div<{ open?: boolean; theme?: Theme }>`
   display: flex;
   align-items: center;
   ${({ theme }) => theme.breakpoints.down('md')} {
     position: fixed;
-    width: 100%;
-    background-color: red;
+    width: 100vw;
+    background-color: ${({ theme }) => theme.colors.primary.dark};
+    left: 0;
+    top: 80px;
     height: 300px;
+    z-index: 30;
+    flex-direction: column;
   }
 `;
