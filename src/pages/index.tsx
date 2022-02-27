@@ -1,7 +1,7 @@
 import Welcome from '../components/landingPage/welcome';
 import Main from '../layout/main';
 
-const images = ['/jacket.jpg'];
+const images = ['/jacket.jpg', 'suit.jpg', 'womansuit.jpg', 'mansuit.jpg'];
 
 const Home = () => (
   <Main>

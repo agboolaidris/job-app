@@ -6,7 +6,6 @@ import TextTransition, { presets } from 'react-text-transition';
 const LineStyle = styled.div<{ theme?: Theme }>`
   width: 100%;
   background-color: ${({ theme }) => theme.colors.primary.dark};
-  text-align: center;
   height: 30px;
   font-size: 0.9rem;
   display: flex;

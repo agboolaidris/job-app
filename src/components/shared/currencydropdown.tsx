@@ -19,7 +19,7 @@ const MenuItemStyled = styled.div`
 
 const MenuItemDropDown = styled.div<{ open: boolean; theme?: Theme }>`
   min-width: 150px;
-  background-color: ${({ theme }) => theme.colors.primary.dark};
+  background-color: ${({ theme }) => theme.colors.primary.main};
   position: absolute;
   top: 30px;
   left: 0;
@@ -28,7 +28,7 @@ const MenuItemDropDown = styled.div<{ open: boolean; theme?: Theme }>`
   overflow: hidden;
   display: flex;
   justify-content: space-between;
-
+  z-index: 10;
   ${({ open }) =>
     open &&
     css`
