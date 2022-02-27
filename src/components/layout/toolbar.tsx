@@ -1,10 +1,11 @@
 import React from 'react';
-import { Box, Theme } from '@mui/material';
+import { Box, IconButton, Theme } from '@mui/material';
 import styled from '@emotion/styled';
 import { Menu, MenuItem } from './navItem';
 import { CurrencyDropDown } from '../shared/currencydropdown';
 import { Link } from '../shared/link';
 import categoriesDB from '../../../database/category.json';
+import BarIcon from '../shared/bar';
 
 const AppBar = styled.nav<{ theme?: Theme }>`
   height: 80px;
@@ -41,6 +42,9 @@ function Index() {
   ];
   return (
     <AppBar>
+      <IconButton>
+        <BarIcon />
+      </IconButton>
       <Box sx={{ display: { xs: 'none', md: 'block' } }}>
         <Menu>
           {categoriesDB.map((category, i) => (
