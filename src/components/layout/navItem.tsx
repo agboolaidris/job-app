@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { Theme } from '@mui/material';
+import { Theme, Box } from '@mui/material';
 import { Link } from '../shared/link';
+import KeyboardArrowDownSharpIcon from '@mui/icons-material/KeyboardArrowDownSharp';
+import KeyboardArrowUpSharpIcon from '@mui/icons-material/KeyboardArrowUpSharp';
 
-const MenuItemStyled = styled.div`
+const MenuItemDesktopStyled = styled.div`
   margin-right: 20px;
   & > span {
     font-size: 0.8rem;
@@ -18,7 +20,7 @@ const MenuItemStyled = styled.div`
   }
 `;
 
-const MenuItemDropDown = styled.div<{ open: boolean; theme?: Theme }>`
+const MenuItemDropDownDesktop = styled.div<{ open: boolean; theme?: Theme }>`
   width: 100%;
   background-color: ${({ theme }) => theme.colors.primary.dark};
   position: absolute;
@@ -83,7 +85,7 @@ const MenuItemDropDown = styled.div<{ open: boolean; theme?: Theme }>`
     `};
 `;
 
-interface MenuItemProps {
+interface MenuItemDesktopProps {
   name: string;
   categories?: string[];
   trends?: string[];
@@ -91,13 +93,13 @@ interface MenuItemProps {
   popular_products?: { name: string; url: string }[];
 }
 
-export const MenuItem = ({
+export const MenuItemDesktop = ({
   name,
   categories,
   trends,
   brands,
   popular_products,
-}: MenuItemProps) => {
+}: MenuItemDesktopProps) => {
   const [expanded, setExpanded] = useState(false);
 
   function expand() {
@@ -109,9 +111,9 @@ export const MenuItem = ({
   }
 
   return (
-    <MenuItemStyled tabIndex={0} onFocus={expand} onBlur={close}>
+    <MenuItemDesktopStyled tabIndex={0} onFocus={expand} onBlur={close}>
       <span>{name}</span>
-      <MenuItemDropDown open={expanded}>
+      <MenuItemDropDownDesktop open={expanded}>
         <div className="start-flex">
           {trends && (
             <ul>
@@ -157,13 +159,87 @@ export const MenuItem = ({
             </div>
           ))}
         </div>
-      </MenuItemDropDown>
-    </MenuItemStyled>
+      </MenuItemDropDownDesktop>
+    </MenuItemDesktopStyled>
+  );
+};
+
+const MenuItemMobileStyled = styled.div<{ theme?: Theme }>`
+  padding: 0 min(5%, 30px);
+  .title {
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    opacity: 0.9;
+    &:hover {
+      font-weight: bolder;
+      opacity: 1;
+    }
+  }
+  .line {
+    width: 100%;
+    height: 1px;
+    background: ${({ theme }) => theme.colors.secondary.light};
+  }
+`;
+
+const MenuItemDropDownMobile = styled.div<{ open: boolean; theme?: Theme }>`
+  width: 100%;
+  height: 0;
+  transition: all 0.3 ease-out;
+  overflow: hidden;
+  z-index: 20;
+
+  ${({ open }) =>
+    open &&
+    css`
+      padding: 0 min(5%, 30px);
+      height: max-content;
+    `};
+`;
+
+interface MenuItemMobileProps {
+  name: string;
+}
+
+export const MenuItemMobile = ({ name }: MenuItemMobileProps) => {
+  const [expanded, setExpanded] = useState(false);
+
+  function expand() {
+    setExpanded(true);
+  }
+
+  function close() {
+    setExpanded(false);
+  }
+
+  return (
+    <MenuItemMobileStyled tabIndex={0} onFocus={expand} onBlur={close}>
+      <div className="title">
+        {name} <KeyboardArrowDownSharpIcon />
+      </div>
+      <MenuItemDropDownMobile open={expanded}>{name}</MenuItemDropDownMobile>
+      <div className="line"></div>
+    </MenuItemMobileStyled>
   );
 };
 
 // The Menu Wrapper
-export const Menu = styled.div`
-  display: flex;
+export const Menu = styled(Box)<{ open?: boolean; theme?: Theme }>`
   align-items: center;
+  flex-direction: row;
+  width: max-content;
+  ${({ theme }) => theme.breakpoints.down('md')} {
+    position: fixed;
+    width: 100vw;
+    background-color: ${({ theme }) => theme.colors.primary.dark};
+    left: 0;
+    top: 80px;
+    height: 300px;
+    z-index: 30;
+    flex-direction: column;
+  }
 `;

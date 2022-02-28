@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Box, Theme, Badge, IconButton } from '@mui/material';
+import { Box, Theme, Badge } from '@mui/material';
 import styled from '@emotion/styled';
-import { Menu, MenuItem } from './navItem';
+import { Menu, MenuItemDesktop, MenuItemMobile } from './navItem';
 import { CurrencyDropDown } from '../shared/currencydropdown';
 import { Link } from '../shared/link';
 import categoriesDB from '../../../database/category.json';
@@ -50,41 +50,42 @@ function Index() {
       >
         {openMobileMenu ? <TimesIcon /> : <BarIcon />}
       </Box>
-      <Box sx={{ display: { xs: 'none', md: 'block' } }}>
-        <Menu>
-          {categoriesDB.map((category, i) => (
-            <MenuItem
-              key={i}
-              name={category.name}
-              categories={category.categories}
-              brands={category.brands}
-              trends={category.trends}
-              popular_products={category.popular_product}
-            />
-          ))}
-        </Menu>
-      </Box>
+
+      <Menu sx={{ display: { xs: 'none', md: 'flex' } }}>
+        {categoriesDB.map((category, i) => (
+          <MenuItemDesktop
+            key={i}
+            name={category.name}
+            categories={category.categories}
+            brands={category.brands}
+            trends={category.trends}
+            popular_products={category.popular_product}
+          />
+        ))}
+      </Menu>
 
       <Link href="/">
         <span className="logo">_IRIS_</span>
       </Link>
 
-      <Box sx={{ display: { xs: 'none', md: 'block' } }}>
-        <Menu>
-          <CurrencyDropDown currencies={currencies} />
-          <Link href="/login">Account </Link>
+      <Menu sx={{ display: { xs: 'none', md: 'flex' } }}>
+        <CurrencyDropDown currencies={currencies} />
+        <Link href="/login">Account </Link>
 
-          <Link href="/login" sx={{ marginLeft: 3 }}>
-            Cart (0)
-          </Link>
-        </Menu>
-      </Box>
+        <Link href="/login" sx={{ marginLeft: 3 }}>
+          Cart (0)
+        </Link>
+      </Menu>
 
       <Link href="/" sx={{ display: { md: 'none' } }}>
         <Badge badgeContent={12} color="error">
           <ShoppingCartOutlinedIcon />
         </Badge>
       </Link>
+      <Menu open={openMobileMenu} sx={{ display: { md: 'none' } }}>
+        <MenuItemMobile name="Men" />
+        <MenuItemMobile name="Women" />
+      </Menu>
     </AppBar>
   );
 }
