@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Theme, Badge } from '@mui/material';
 import styled from '@emotion/styled';
-import { Menu, MenuItemDesktop, MenuItemMobile } from './navItem';
+import { Menu, MenuItemDesktop, MenuItemMobile, MenuItemMobileStyled } from './navItem';
 import { CurrencyDropDown } from '../shared/currencydropdown';
 import { Link } from '../shared/link';
 import categoriesDB from '../../../database/category.json';
@@ -83,8 +83,32 @@ function Index() {
         </Badge>
       </Link>
       <Menu open={openMobileMenu} sx={{ display: { md: 'none' } }}>
-        <MenuItemMobile name="Men" />
-        <MenuItemMobile name="Women" />
+        {categoriesDB.map((category, i) => {
+          return (
+            <MenuItemMobile name={category.name} key={i}>
+              {category?.trends?.map((s, i) => (
+                <Link href="/" sx={{ display: 'block', marginY: 2 }} key={i}>
+                  {s}
+                </Link>
+              ))}
+              {category?.categories?.map((s, i) => (
+                <Link href="/" sx={{ display: 'block', marginY: 2 }} key={i}>
+                  {s}
+                </Link>
+              ))}
+              {category?.brands?.map((s, i) => (
+                <Link href="/" sx={{ display: 'block', marginY: 2 }} key={i}>
+                  {s}
+                </Link>
+              ))}
+            </MenuItemMobile>
+          );
+        })}
+        <MenuItemMobileStyled>
+          <Link href="/" sx={{ display: 'block', marginY: 2 }}>
+            Account
+          </Link>
+        </MenuItemMobileStyled>
       </Menu>
     </AppBar>
   );

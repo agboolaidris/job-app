@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 import Image from 'next/image';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
@@ -164,8 +164,8 @@ export const MenuItemDesktop = ({
   );
 };
 
-const MenuItemMobileStyled = styled.div<{ theme?: Theme }>`
-  padding: 0 min(5%, 30px);
+export const MenuItemMobileStyled = styled.div<{ theme?: Theme }>`
+  padding: 10px min(5%, 30px);
   .title {
     font-size: 1.2rem;
     cursor: pointer;
@@ -178,6 +178,9 @@ const MenuItemMobileStyled = styled.div<{ theme?: Theme }>`
       font-weight: bolder;
       opacity: 1;
     }
+  }
+  a {
+    font-size: 1.2rem !important;
   }
   .line {
     width: 100%;
@@ -203,9 +206,15 @@ const MenuItemDropDownMobile = styled.div<{ open: boolean; theme?: Theme }>`
 
 interface MenuItemMobileProps {
   name: string;
+  children?: ReactNode;
+  onClick?: () => void;
 }
 
-export const MenuItemMobile = ({ name }: MenuItemMobileProps) => {
+export const MenuItemMobile = ({
+  name,
+  children,
+  onClick,
+}: MenuItemMobileProps) => {
   const [expanded, setExpanded] = useState(false);
 
   function expand() {
@@ -218,11 +227,22 @@ export const MenuItemMobile = ({ name }: MenuItemMobileProps) => {
 
   return (
     <MenuItemMobileStyled tabIndex={0} onFocus={expand} onBlur={close}>
-      <div className="title">
-        {name} <KeyboardArrowDownSharpIcon />
+      <div className="title" onClick={onClick && onClick}>
+        {name}
+        {children ? (
+          expanded ? (
+            <KeyboardArrowUpSharpIcon />
+          ) : (
+            <KeyboardArrowDownSharpIcon />
+          )
+        ) : (
+          ''
+        )}
       </div>
-      <MenuItemDropDownMobile open={expanded}>{name}</MenuItemDropDownMobile>
-      <div className="line"></div>
+      <MenuItemDropDownMobile open={expanded}>
+        {children}
+      </MenuItemDropDownMobile>
+      {children ? <div className="line"></div> : ''}
     </MenuItemMobileStyled>
   );
 };
@@ -233,13 +253,20 @@ export const Menu = styled(Box)<{ open?: boolean; theme?: Theme }>`
   flex-direction: row;
   width: max-content;
   ${({ theme }) => theme.breakpoints.down('md')} {
+    padding: 20px 0;
     position: fixed;
     width: 100vw;
     background-color: ${({ theme }) => theme.colors.primary.dark};
     left: 0;
     top: 80px;
-    height: 300px;
     z-index: 30;
     flex-direction: column;
+    transform: translateX(-100%);
+    transition: all 0.3s ease-in-out;
+    ${({ open }) =>
+      open &&
+      css`
+        transform: translateX(0);
+      `}
   }
 `;
