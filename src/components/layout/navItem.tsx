@@ -164,7 +164,7 @@ export const MenuItemDesktop = ({
   );
 };
 
-const MenuItemMobileStyled = styled.div<{ theme?: Theme }>`
+export const MenuItemMobileStyled = styled.div<{ theme?: Theme }>`
   padding: 10px min(5%, 30px);
   .title {
     font-size: 1.2rem;
@@ -179,6 +179,9 @@ const MenuItemMobileStyled = styled.div<{ theme?: Theme }>`
       opacity: 1;
     }
   }
+  a {
+    font-size: 1.2rem !important;
+  }
   .line {
     width: 100%;
     height: 1px;
@@ -192,10 +195,6 @@ const MenuItemDropDownMobile = styled.div<{ open: boolean; theme?: Theme }>`
   transition: all 0.3 ease-out;
   overflow: hidden;
   z-index: 20;
-
-  a {
-    font-size: 1.2rem !important;
-  }
 
   ${({ open }) =>
     open &&

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Theme, Badge } from '@mui/material';
 import styled from '@emotion/styled';
-import { Menu, MenuItemDesktop, MenuItemMobile } from './navItem';
+import { Menu, MenuItemDesktop, MenuItemMobile, MenuItemMobileStyled } from './navItem';
 import { CurrencyDropDown } from '../shared/currencydropdown';
 import { Link } from '../shared/link';
 import categoriesDB from '../../../database/category.json';
@@ -104,6 +104,11 @@ function Index() {
             </MenuItemMobile>
           );
         })}
+        <MenuItemMobileStyled>
+          <Link href="/" sx={{ display: 'block', marginY: 2 }}>
+            Account
+          </Link>
+        </MenuItemMobileStyled>
       </Menu>
     </AppBar>
   );
