@@ -165,7 +165,7 @@ export const MenuItemDesktop = ({
 };
 
 const MenuItemMobileStyled = styled.div<{ theme?: Theme }>`
-  padding: 0 min(5%, 30px);
+  padding: 10px min(5%, 30px);
   .title {
     font-size: 1.2rem;
     cursor: pointer;
@@ -192,6 +192,7 @@ const MenuItemDropDownMobile = styled.div<{ open: boolean; theme?: Theme }>`
   transition: all 0.3 ease-out;
   overflow: hidden;
   z-index: 20;
+  font-size: 1.2rem;
 
   ${({ open }) =>
     open &&
