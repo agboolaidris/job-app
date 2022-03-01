@@ -254,19 +254,20 @@ export const Menu = styled(Box)<{ open?: boolean; theme?: Theme }>`
   flex-direction: row;
   width: max-content;
   ${({ theme }) => theme.breakpoints.down('md')} {
+    padding: 20px 0;
     position: fixed;
     width: 100vw;
     background-color: ${({ theme }) => theme.colors.primary.dark};
     left: 0;
     top: 80px;
-    height: 300px;
     z-index: 30;
     flex-direction: column;
     transform: translateX(-100%);
+    transition: all 0.3s ease-in-out;
     ${({ open }) =>
       open &&
       css`
-        transform: translateY(0);
+        transform: translateX(0);
       `}
   }
 `;

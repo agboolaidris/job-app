@@ -83,16 +83,27 @@ function Index() {
         </Badge>
       </Link>
       <Menu open={openMobileMenu} sx={{ display: { md: 'none' } }}>
-        <MenuItemMobile name="Men">
-          <Link href="/" sx={{ display: 'block', marginY: 2 }}>
-            JJJJ
-          </Link>
-
-          <Link href="/" sx={{ display: 'block', marginY: 2 }}>
-            JJJJ
-          </Link>
-        </MenuItemMobile>
-        <MenuItemMobile name="Women" />
+        {categoriesDB.map((category, i) => {
+          return (
+            <MenuItemMobile name={category.name} key={i}>
+              {category?.trends?.map((s, i) => (
+                <Link href="/" sx={{ display: 'block', marginY: 2 }} key={i}>
+                  {s}
+                </Link>
+              ))}
+              {category?.categories?.map((s, i) => (
+                <Link href="/" sx={{ display: 'block', marginY: 2 }} key={i}>
+                  {s}
+                </Link>
+              ))}
+              {category?.brands?.map((s, i) => (
+                <Link href="/" sx={{ display: 'block', marginY: 2 }} key={i}>
+                  {s}
+                </Link>
+              ))}
+            </MenuItemMobile>
+          );
+        })}
       </Menu>
     </AppBar>
   );

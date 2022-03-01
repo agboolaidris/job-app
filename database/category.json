@@ -62,7 +62,7 @@
   {
     "name": "Brand",
     "brands": ["Nike", "Addidas", ""],
-    "trends": ["All", "New Arrival", "Men sale"],
+    "trends": ["All", "New Arrival"],
     "popular_product": [
       {
         "name": "Graphic T-shirt",
