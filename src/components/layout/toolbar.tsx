@@ -83,7 +83,11 @@ function Index() {
         </Badge>
       </Link>
       <Menu open={openMobileMenu} sx={{ display: { md: 'none' } }}>
-        <MenuItemMobile name="Men" />
+        <MenuItemMobile name="Men">
+          <Link href="/" sx={{ fontSize: '1.7rem' }}>
+            JJJJ
+          </Link>
+        </MenuItemMobile>
         <MenuItemMobile name="Women" />
       </Menu>
     </AppBar>

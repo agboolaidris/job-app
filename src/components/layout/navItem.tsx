@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 import Image from 'next/image';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
@@ -192,7 +192,11 @@ const MenuItemDropDownMobile = styled.div<{ open: boolean; theme?: Theme }>`
   transition: all 0.3 ease-out;
   overflow: hidden;
   z-index: 20;
-  font-size: 1.2rem;
+
+  a {
+    font-size: 1.2rem !important;
+    padding: 0 10px;
+  }
 
   ${({ open }) =>
     open &&
@@ -204,9 +208,10 @@ const MenuItemDropDownMobile = styled.div<{ open: boolean; theme?: Theme }>`
 
 interface MenuItemMobileProps {
   name: string;
+  children?: ReactNode;
 }
 
-export const MenuItemMobile = ({ name }: MenuItemMobileProps) => {
+export const MenuItemMobile = ({ name, children }: MenuItemMobileProps) => {
   const [expanded, setExpanded] = useState(false);
 
   function expand() {
@@ -222,7 +227,9 @@ export const MenuItemMobile = ({ name }: MenuItemMobileProps) => {
       <div className="title">
         {name} <KeyboardArrowDownSharpIcon />
       </div>
-      <MenuItemDropDownMobile open={expanded}>{name}</MenuItemDropDownMobile>
+      <MenuItemDropDownMobile open={expanded}>
+        {children}
+      </MenuItemDropDownMobile>
       <div className="line"></div>
     </MenuItemMobileStyled>
   );
