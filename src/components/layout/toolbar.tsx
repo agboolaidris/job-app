@@ -84,7 +84,11 @@ function Index() {
       </Link>
       <Menu open={openMobileMenu} sx={{ display: { md: 'none' } }}>
         <MenuItemMobile name="Men">
-          <Link href="/" sx={{ fontSize: '1.7rem' }}>
+          <Link href="/" sx={{ display: 'block', marginY: 2 }}>
+            JJJJ
+          </Link>
+
+          <Link href="/" sx={{ display: 'block', marginY: 2 }}>
             JJJJ
           </Link>
         </MenuItemMobile>

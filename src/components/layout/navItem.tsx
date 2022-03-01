@@ -195,7 +195,6 @@ const MenuItemDropDownMobile = styled.div<{ open: boolean; theme?: Theme }>`
 
   a {
     font-size: 1.2rem !important;
-    padding: 0 10px;
   }
 
   ${({ open }) =>
@@ -209,9 +208,14 @@ const MenuItemDropDownMobile = styled.div<{ open: boolean; theme?: Theme }>`
 interface MenuItemMobileProps {
   name: string;
   children?: ReactNode;
+  onClick?: () => void;
 }
 
-export const MenuItemMobile = ({ name, children }: MenuItemMobileProps) => {
+export const MenuItemMobile = ({
+  name,
+  children,
+  onClick,
+}: MenuItemMobileProps) => {
   const [expanded, setExpanded] = useState(false);
 
   function expand() {
@@ -224,13 +228,22 @@ export const MenuItemMobile = ({ name, children }: MenuItemMobileProps) => {
 
   return (
     <MenuItemMobileStyled tabIndex={0} onFocus={expand} onBlur={close}>
-      <div className="title">
-        {name} <KeyboardArrowDownSharpIcon />
+      <div className="title" onClick={onClick && onClick}>
+        {name}
+        {children ? (
+          expanded ? (
+            <KeyboardArrowUpSharpIcon />
+          ) : (
+            <KeyboardArrowDownSharpIcon />
+          )
+        ) : (
+          ''
+        )}
       </div>
       <MenuItemDropDownMobile open={expanded}>
         {children}
       </MenuItemDropDownMobile>
-      <div className="line"></div>
+      {children ? <div className="line"></div> : ''}
     </MenuItemMobileStyled>
   );
 };
@@ -249,5 +262,11 @@ export const Menu = styled(Box)<{ open?: boolean; theme?: Theme }>`
     height: 300px;
     z-index: 30;
     flex-direction: column;
+    transform: translateX(-100%);
+    ${({ open }) =>
+      open &&
+      css`
+        transform: translateY(0);
+      `}
   }
 `;
