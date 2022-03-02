@@ -3,7 +3,8 @@ import { Container, Theme } from '@mui/material';
 import React from 'react';
 
 const Wrap = styled.div<{ theme?: Theme }>`
-  background: ${({ theme }) => theme.colors.primary.dark};
+  // background: ${({ theme }) => theme.colors.primary.dark};
+  padding: 100px 0;
 `;
 
 function Footer() {
