@@ -40,9 +40,15 @@ function Footer() {
               Signup for the latest beauty news, style and products sample and
               coupons
             </Typography>
-            <Stack sx={{ marginTop: 3 }} direction="row" spacing={1}>
+            <Stack
+              sx={{ marginTop: 3 }}
+              direction={{ xs: 'column', md: 'row' }}
+              spacing={1}
+            >
               <TextField />
-              <Button>Submit</Button>
+              <Box sx={{ width: { xs: '100%', md: '120px' } }}>
+                <Button width="100%">Submit</Button>
+              </Box>
             </Stack>
           </Box>
           <Box>
