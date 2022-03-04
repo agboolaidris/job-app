@@ -4,6 +4,7 @@ import { Theme } from '@mui/material/styles';
 import { Box } from '@mui/material';
 import Toobar from '../components/layout/toolbar';
 import InfoLine from '../components/shared/infoLine';
+import Footer from '../components/layout/footer';
 
 interface StyleProps {
   theme?: Theme;
@@ -29,6 +30,7 @@ function Main({ children }: Props) {
       <Toobar />
       <InfoLine Texts={TEXTS} />
       {children}
+      <Footer />
     </Wrapper>
   );
 }
