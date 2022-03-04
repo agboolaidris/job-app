@@ -11,6 +11,7 @@ const Wrap = styled.div<{ theme?: Theme }>`
   .flex {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
   }
 `;
 
@@ -19,7 +20,7 @@ function Footer() {
     <Wrap>
       <Container>
         <div className="flex">
-          <div>
+          <Box sx={{ width: '400px', maxWidth: '100%' }}>
             <Typography variant="h5">Don't Miss Out</Typography>
             <Typography>
               Signup for the latest beauty news, style and products sample and
@@ -31,10 +32,31 @@ function Footer() {
                 Submit
               </Button>
             </Stack>
-          </div>
+          </Box>
+          <Box sx={{ width: '400px', maxWidth: '100%' }}>
+            <Typography variant="h5">Don't Miss Out</Typography>
+            <Typography>
+              Signup for the latest beauty news, style and products sample and
+              coupons
+            </Typography>
+            <Stack sx={{ marginTop: 3 }} flexDirection="row">
+              <TextField />
+              <Button sx={{ width: '120px', marginLeft: 2, display: 'none' }}>
+                Submit
+              </Button>
+            </Stack>
+          </Box>
           <div>
             <p className="title">Social media</p>
-            <Link href="/">Facebook</Link>
+            <Link href="/" sx={{ display: 'block', marginY: 1 }}>
+              Facebook
+            </Link>
+            <Link href="/" sx={{ display: 'block', marginY: 1 }}>
+              Facebook
+            </Link>{' '}
+            <Link href="/" sx={{ display: 'block', marginY: 1 }}>
+              Facebook
+            </Link>
           </div>
           <div>
             <p className="title">Social media</p>
