@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { Box, Container, Theme, Typography } from '@mui/material';
+import { Box, Container, Stack, Theme, Typography } from '@mui/material';
 import { Link } from '../shared/link';
 import TextField from '../shared/textField';
 import Button from '../shared/button';
@@ -25,10 +25,12 @@ function Footer() {
               Signup for the latest beauty news, style and products sample and
               coupons
             </Typography>
-            <Box sx={{ marginTop: 3, display: 'flex', alignItems: 'center' }}>
+            <Stack sx={{ marginTop: 3 }} flexDirection="row">
               <TextField />
-              <Button>Submit</Button>
-            </Box>
+              <Button sx={{ width: '120px', marginLeft: 2, display: 'none' }}>
+                Submit
+              </Button>
+            </Stack>
           </div>
           <div>
             <p className="title">Social media</p>

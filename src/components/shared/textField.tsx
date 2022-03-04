@@ -18,10 +18,14 @@ const Wrap = styled(Box)<{ theme?: Theme }>`
     }
   }
 `;
-function TextField() {
+
+interface Props {
+  label?: string;
+}
+function TextField({ label }: Props) {
   return (
     <Wrap>
-      <label>Email</label>
+      {label && <label>{label}</label>}
       <input placeholder="enter your email address" />
     </Wrap>
   );
