@@ -2,6 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { Container, Theme, Typography } from '@mui/material';
 import { Link } from '../shared/link';
+import TextField from '../shared/textField';
 
 const Wrap = styled.div<{ theme?: Theme }>`
   background-color: ${({ theme }) => theme.colors.primary.dark};
@@ -23,7 +24,9 @@ function Footer() {
               Signup for the latest beauty news, style and products sample and
               coupons
             </Typography>
-            <Link href="/">Facebook</Link>
+            <div className="footer-form">
+              <TextField />
+            </div>
           </div>
           <div>
             <p className="title">Social media</p>

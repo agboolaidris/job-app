@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-function textField() {
-  return (
-    <div>textField</div>
-  )
+function TextField() {
+  return <div>textField</div>;
 }
 
-export default textField
+export default TextField;
