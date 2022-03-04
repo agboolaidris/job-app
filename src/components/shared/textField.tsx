@@ -14,7 +14,7 @@ const Wrap = styled(Box)<{ theme?: Theme }>`
     border: 1px solid ${({ theme }) => theme.colors.secondary.main};
     &:hover,
     &:focus {
-      border: 3px solid ${({ theme }) => theme.colors.secondary.main};
+      border: 2px solid ${({ theme }) => theme.colors.secondary.main};
     }
   }
 `;
