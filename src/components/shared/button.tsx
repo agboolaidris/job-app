@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { Box } from '@mui/material';
+import { ButtonUnstyled } from '@mui/material';
+import React from 'react';
 
-const Wrap = styled(Box)`
-  width: 100%;
-  border: 2px solid red;
-  min-height: 40px;
+const ButtonStyled = styled(ButtonUnstyled)`
+  width: max;
 `;
 
-function Button() {
-  return <Wrap></Wrap>;
+interface Props {
+  children: ReactNode;
+}
+function Button({ children }: Props) {
+  return <div>{children}</div>;
 }
 
 export default Button;

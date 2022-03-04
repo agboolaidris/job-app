@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { Container, Theme, Typography } from '@mui/material';
+import { Box, Container, Theme, Typography } from '@mui/material';
 import { Link } from '../shared/link';
 import TextField from '../shared/textField';
+import Button from '../shared/button';
 
 const Wrap = styled.div<{ theme?: Theme }>`
   background-color: ${({ theme }) => theme.colors.primary.dark};
@@ -24,9 +25,10 @@ function Footer() {
               Signup for the latest beauty news, style and products sample and
               coupons
             </Typography>
-            <div className="footer-form">
+            <Box sx={{ marginTop: 3, display: 'flex', alignItems: 'center' }}>
               <TextField />
-            </div>
+              <Button>Submit</Button>
+            </Box>
           </div>
           <div>
             <p className="title">Social media</p>
