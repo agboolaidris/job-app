@@ -1,20 +1,20 @@
 import React, { ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { ButtonUnstyled, Theme } from '@mui/material';
-import { SxProps } from '@mui/system';
+import { Theme } from '@mui/material';
 
-const ButtonStyled = styled(ButtonUnstyled)<{ theme?: Theme }>`
-  width: max-content;
+const ButtonStyled = styled.button<{ theme?: Theme; width?: string }>`
+  width: ${({ width }) => (width ? width : '200px')};
   height: 50px;
   border: 2px solid ${({ theme }) => theme.colors.secondary.main};
+  cursor: pointer;
 `;
 
 interface Props {
   children: ReactNode;
-  sx?: SxProps;
+  width?: string;
 }
-function Button({ children, sx }: Props) {
-  return <ButtonStyled sx={sx}>{children}</ButtonStyled>;
+function Button({ children, width }: Props) {
+  return <ButtonStyled width={width}>{children}</ButtonStyled>;
 }
 
 export default Button;

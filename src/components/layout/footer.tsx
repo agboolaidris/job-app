@@ -19,31 +19,20 @@ function Footer() {
   return (
     <Wrap>
       <Container>
-        <div className="flex">
+        <Stack
+          direction={{ xs: 'column', md: 'row' }}
+          spacing={2}
+          justifyContent="space-between"
+        >
           <Box sx={{ width: '400px', maxWidth: '100%' }}>
             <Typography variant="h5">Don't Miss Out</Typography>
             <Typography>
               Signup for the latest beauty news, style and products sample and
               coupons
             </Typography>
-            <Stack sx={{ marginTop: 3 }} flexDirection="row">
+            <Stack sx={{ marginTop: 3 }} direction="row" spacing={1}>
               <TextField />
-              <Button sx={{ width: '120px', marginLeft: 2, display: 'none' }}>
-                Submit
-              </Button>
-            </Stack>
-          </Box>
-          <Box sx={{ width: '400px', maxWidth: '100%' }}>
-            <Typography variant="h5">Don't Miss Out</Typography>
-            <Typography>
-              Signup for the latest beauty news, style and products sample and
-              coupons
-            </Typography>
-            <Stack sx={{ marginTop: 3 }} flexDirection="row">
-              <TextField />
-              <Button sx={{ width: '120px', marginLeft: 2, display: 'none' }}>
-                Submit
-              </Button>
+              <Button>Submit</Button>
             </Stack>
           </Box>
           <div>
@@ -62,7 +51,7 @@ function Footer() {
             <p className="title">Social media</p>
             <Link href="/">Facebook</Link>
           </div>
-        </div>
+        </Stack>
       </Container>
     </Wrap>
   );
