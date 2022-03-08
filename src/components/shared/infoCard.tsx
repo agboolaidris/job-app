@@ -26,7 +26,9 @@ function InfoCard({ img, title, content }: Props) {
       <Box sx={{ marginY: 1 }}>
         <Image src={img} width="30" height="30" alt={title} />
       </Box>
-      <Typography variant="h6">{title}</Typography>
+      <Typography variant="subtitle1" sx={{ fontWeight: 'bolder' }}>
+        {title}
+      </Typography>
       <Typography sx={{ marginTop: 1, color: theme.colors.secondary.light }}>
         {content}
       </Typography>
