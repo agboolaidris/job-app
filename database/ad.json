@@ -1,0 +1,22 @@
+[
+  {
+    "img": "/discount.png",
+    "title": "15% off First Order",
+    "content": "Subscribe to our mailing list for 15% off first order."
+  },
+  {
+    "img": "/world.png",
+    "title": "Free Worldwide Shipping",
+    "content": "Free worldwide shipping on all order over $70"
+  },
+  {
+    "img": "/discount.png",
+    "title": "Buy now Pay Later",
+    "content": "Buy now and pay later with afterPay or zippay"
+  },
+  {
+    "img": "/world.png",
+    "title": "15% off First Order",
+    "content": "Subscribe to our mailing list for 15% off first order."
+  }
+]

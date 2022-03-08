@@ -1,25 +1,36 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import Image from 'next/image';
 import { Box, Theme, Typography, useTheme } from '@mui/material';
+
 const Wrap = styled(Box)<{ theme?: Theme }>`
   width: 300px;
   max-width: 100%;
-  height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   text-align: center;
+  padding: 10px 0;
 `;
+interface Props {
+  img: string;
+  title: string;
+  content: string;
+}
 
-function InfoCard() {
+function InfoCard({ img, title, content }: Props) {
   const theme = useTheme();
   return (
     <Wrap>
-      <Typography variant="h5">APPPPP</Typography>
-      <Typography sx={{ marginTop: 2, color: theme.colors.secondary.light }}>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae
-        totam dicta quisquam. Laborum tenetur repellendus culpa iusto.
+      <Box sx={{ marginY: 1 }}>
+        <Image src={img} width="30" height="30" alt={title} />
+      </Box>
+      <Typography variant="subtitle1" sx={{ fontWeight: 'bolder' }}>
+        {title}
+      </Typography>
+      <Typography sx={{ marginTop: 1, color: theme.colors.secondary.light }}>
+        {content}
       </Typography>
     </Wrap>
   );
