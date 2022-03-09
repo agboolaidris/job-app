@@ -28,9 +28,11 @@ function Main({ children }: Props) {
   return (
     <Wrapper>
       <Toobar />
-      <InfoLine Texts={TEXTS} />
-      {children}
-      <Footer />
+      <Box sx={{ marginTop: '80px' }}>
+        <InfoLine Texts={TEXTS} />
+        {children}
+        <Footer />
+      </Box>
     </Wrapper>
   );
 }

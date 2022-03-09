@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import { Box, Theme, Badge } from '@mui/material';
 import styled from '@emotion/styled';
-import { Menu, MenuItemDesktop, MenuItemMobile, MenuItemMobileStyled } from './navItem';
+import {
+  Menu,
+  MenuItemDesktop,
+  MenuItemMobile,
+  MenuItemMobileStyled,
+} from './navItem';
 import { CurrencyDropDown } from '../shared/currencydropdown';
 import { Link } from '../shared/link';
 import categoriesDB from '../../../database/category.json';
@@ -14,7 +19,12 @@ const AppBar = styled.nav<{ theme?: Theme }>`
   align-items: center;
   justify-content: space-between;
   padding: 0 min(5%, 30px);
-  position: relative;
+  position: fixed;
+  width: 100%;
+  z-index: 40;
+  top: 0;
+  left: 0;
+  background: ${({ theme }) => theme.colors.primary.main};
   .logo {
     text-decoration: none;
     font-size: 1.5rem;
