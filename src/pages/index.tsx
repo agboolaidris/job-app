@@ -6,10 +6,32 @@ import Main from '../layout/main';
 import adDB from '../../database/ad.json';
 
 const images = ['/jacket.jpg', 'suit.jpg', 'womansuit.jpg', 'mansuit.jpg'];
+const itemData = [
+  {
+    img: '/jacket.jpg',
+    title: 'Men',
+    rows: 2,
+    cols: 2,
+  },
+  {
+    img: '/mansuit.jpg',
+    title: 'Wedding',
+  },
+  {
+    img: '/womansuit.jpg',
+    title: 'Women',
+  },
+  {
+    img: '/suit.jpg',
+    title: 'Unisex',
+    cols: 2,
+  },
+];
 
 const Home = () => (
   <Main>
     <Welcome images={images} />
+
     <Container sx={{ paddingY: { xs: '50px', md: '100px' } }}>
       <Grid container spacing={2} justifyContent="center" alignItems="center">
         {adDB.map((ad, i) => (
@@ -19,7 +41,8 @@ const Home = () => (
         ))}
       </Grid>
     </Container>
-    <GridImage />
+    
+    <GridImage items={itemData} />
   </Main>
 );
 

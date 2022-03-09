@@ -32,7 +32,11 @@ const ImgBox = styled.div<{ theme?: Theme }>`
   }
 `;
 
-export default function QuiltedImageList() {
+interface Props {
+  items: { img: string; title: string; rows?: number; cols?: number }[];
+}
+
+export default function QuiltedImageList({ items }: Props) {
   return (
     <ImageList
       variant="quilted"
@@ -40,7 +44,7 @@ export default function QuiltedImageList() {
       cols={4}
       rowHeight="auto"
     >
-      {itemData.map((item) => (
+      {items.map((item) => (
         <ImageListItem
           key={item.img}
           cols={item.cols || 1}
@@ -59,25 +63,3 @@ export default function QuiltedImageList() {
     </ImageList>
   );
 }
-
-const itemData = [
-  {
-    img: '/jacket.jpg',
-    title: 'Men',
-    rows: 2,
-    cols: 2,
-  },
-  {
-    img: '/mansuit.jpg',
-    title: 'Wedding',
-  },
-  {
-    img: '/womansuit.jpg',
-    title: 'Women',
-  },
-  {
-    img: '/suit.jpg',
-    title: 'Unisex',
-    cols: 2,
-  },
-];
