@@ -13,7 +13,7 @@ function ProductCard() {
   return (
     <CardStyled>
       <div className="imgBox">
-        <Image src="/jacket.png" layout="fill" alt="jacket" />
+        <Image src="/jacket.jpg" width={300} height={300} alt="jacket" />
       </div>
     </CardStyled>
   );
