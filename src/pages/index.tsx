@@ -4,6 +4,7 @@ import GridImage from '../components/landingPage/gridImage';
 import InfoCard from '../components/shared/infoCard';
 import Main from '../layout/main';
 import adDB from '../../database/ad.json';
+import ProductCard from '../components/shared/productCard';
 
 const images = ['/jacket.jpg', 'suit.jpg', 'womansuit.jpg', 'mansuit.jpg'];
 const itemData = [
@@ -41,8 +42,24 @@ const Home = () => (
         ))}
       </Grid>
     </Container>
-    
+
     <GridImage items={itemData} />
+    <Container sx={{ paddingY: { xs: '50px', md: '100px' } }}>
+      <Grid container spacing={2} justifyContent="center" alignItems="center">
+        <Grid item xs={12} sm={6} md={3}>
+          <ProductCard />
+        </Grid>
+        <Grid item xs={12} sm={6} md={3}>
+          <ProductCard />
+        </Grid>
+        <Grid item xs={12} sm={6} md={3}>
+          <ProductCard />
+        </Grid>
+        <Grid item xs={12} sm={6} md={3}>
+          <ProductCard />
+        </Grid>
+      </Grid>
+    </Container>
   </Main>
 );
 
