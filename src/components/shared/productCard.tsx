@@ -18,7 +18,7 @@ function ProductCard() {
       </div>
       <Box>
         <Typography sx={{ fontWeight: 'bolder' }}>
-          Lorem ipsum, dolor sit amet
+          WHERE SELF MADE IS MADE
         </Typography>
         <Typography>$70</Typography>
       </Box>
