@@ -45,28 +45,12 @@ const Home = () => (
     </Container>
 
     <GridImage items={itemData} />
-    <Careusol show={4}>
-      {/* <Container sx={{ paddingY: { xs: '50px', md: '100px' } }}>
-      <Grid container spacing={2} justifyContent="center" alignItems="center">
-        <Grid item xs={12} sm={6} md={3}>
-          <ProductCard />
-        </Grid>
-        <Grid item xs={12} sm={6} md={3}>
-          <ProductCard />
-        </Grid>
-        <Grid item xs={12} sm={6} md={3}>
-          <ProductCard />
-        </Grid>
-        <Grid item xs={12} sm={6} md={3}>
-          <ProductCard />
-        </Grid>
-      </Grid>
-    </Container> */}
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-    </Careusol>
+    <Careusol
+      show={4}
+      cards={['', '', '', ''].map((item, i) => (
+        <ProductCard key={i} />
+      ))}
+    />
   </Main>
 );
 

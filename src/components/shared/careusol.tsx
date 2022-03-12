@@ -4,8 +4,8 @@ import styled from '@emotion/styled';
 import Button from './button';
 
 interface Props {
-  children: ReactNode;
-  show: number;
+  cards: ReactNode[];
+  show?: number;
 }
 
 const Wrap = styled(Box)`
@@ -14,20 +14,27 @@ const Wrap = styled(Box)`
   align-items: center;
 `;
 
-function Careusol({ children, show }: Props) {
-  const [start, setStart] = useState(0);
+function Careusol({ show, cards }: Props) {
+  const [start, setStart] = useState(1);
   const [end, setEnd] = useState(show);
   //   useEffect(() => {
-  //     alert(React.Children);
+  //     alert(show);
   //   }, []);
 
   const handleNext = () => {
-    setStart(() => end + show);
-    setEnd(() => end + show);
+    if (start > 0) {
+      setStart(1);
+      setEnd(show);
+    } else {
+      setStart(() => end + show);
+      setEnd(() => end + show);
+    }
   };
   const handlePrevious = () => {
-    setStart(() => end - show);
-    setEnd(() => end - show);
+    if (start > 0) {
+      setStart(() => end - show);
+      setEnd(() => end - show);
+    }
   };
 
   return (
@@ -37,12 +44,7 @@ function Careusol({ children, show }: Props) {
         <Button onClick={handleNext}>Next</Button>
       </div>
       <Stack direction="row" spacing={2}>
-        {React.Children.map(
-          children,
-          (child: React.DetailedReactHTMLElement<any, HTMLElement>, i) => {
-            if (i > start && i < end) return React.cloneElement(child);
-          }
-        )}
+        {cards.map((card) => card)}
       </Stack>
     </Wrap>
   );
