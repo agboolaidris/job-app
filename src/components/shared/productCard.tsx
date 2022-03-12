@@ -2,6 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import Image from 'next/image';
 import { Box, Theme, Typography } from '@mui/material';
+import Button from './button';
 
 const Size = styled.div<{ theme?: Theme }>`
   display: flex;
@@ -12,7 +13,11 @@ const Size = styled.div<{ theme?: Theme }>`
   border: 1px solid ${({ theme }) => theme.colors.secondary.main};
   color: ${({ theme }) => theme.colors.secondary.main};
   font-weight: bolder;
-  margin: 0 5px;
+  transition: all 0.3s ease-out;
+  &:hover {
+    background: ${({ theme }) => theme.colors.secondary.main};
+    color: ${({ theme }) => theme.colors.primary.main};
+  }
 `;
 const CardStyled = styled.div<{ theme?: Theme }>`
   width: 300px;
@@ -24,6 +29,7 @@ const CardStyled = styled.div<{ theme?: Theme }>`
     cursor: pointer;
     overflow: hidden;
     transition: all 0.3s ease-out;
+
     .cart-content {
       position: absolute;
       bottom: 0;
@@ -31,13 +37,16 @@ const CardStyled = styled.div<{ theme?: Theme }>`
       z-index: 10;
       background: ${({ theme }) => `${theme.colors.primary.dark}90`};
       width: 100%;
-      min-height: 100px;
       transform: translateY(100%);
       padding: 10px;
+      overflow: hidden;
       .sizeBox {
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
+      }
+      button {
+        margin-top: 5px;
       }
     }
     &:hover {
@@ -51,7 +60,7 @@ function ProductCard() {
   return (
     <CardStyled>
       <div className="imgBox">
-        <Image src="/jacket.jpg" width={300} height={400} alt="jacket" />
+        <Image src="/jacket.jpg" layout="fill" alt="jacket" />
         <div className="cart-content">
           <div className="sizeBox">
             <Size>SX</Size>
@@ -59,6 +68,7 @@ function ProductCard() {
             <Size>SX</Size>
             <Size>SX</Size>
           </div>
+          <Button width="100%">Add To Cart</Button>
         </div>
       </div>
 
