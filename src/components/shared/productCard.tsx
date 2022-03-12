@@ -8,8 +8,8 @@ const Size = styled.div<{ theme?: Theme }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border: 1px solid ${({ theme }) => theme.colors.secondary.main};
   color: ${({ theme }) => theme.colors.secondary.main};
   font-weight: bolder;
@@ -28,7 +28,7 @@ const CardStyled = styled.div<{ theme?: Theme }>`
     position: relative;
     cursor: pointer;
     overflow: hidden;
-    transition: all 0.3s ease-out;
+    transition: all 0.6s ease-out;
 
     .cart-content {
       position: absolute;
@@ -46,10 +46,13 @@ const CardStyled = styled.div<{ theme?: Theme }>`
         justify-content: space-between;
       }
       button {
-        margin-top: 5px;
+        margin-top: 15px;
       }
     }
     &:hover {
+      img {
+        transform: scale(1.1);
+      }
       .cart-content {
         transform: translateY(0%);
       }
