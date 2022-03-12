@@ -2,6 +2,18 @@ import React from 'react';
 import styled from '@emotion/styled';
 import Image from 'next/image';
 import { Box, Theme, Typography } from '@mui/material';
+
+const Size = styled.div<{ theme?: Theme }>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border: 1px solid ${({ theme }) => theme.colors.secondary.main};
+  color: ${({ theme }) => theme.colors.secondary.main};
+  font-weight: bolder;
+  margin: 0 5px;
+`;
 const CardStyled = styled.div<{ theme?: Theme }>`
   width: 300px;
   max-width: 100%;
@@ -26,11 +38,6 @@ const CardStyled = styled.div<{ theme?: Theme }>`
         display: flex;
         align-items: center;
         justify-content: center;
-        .size {
-          width: 40px;
-          height: 50px;
-          border: 1px solid red;
-        }
       }
     }
     &:hover {
@@ -47,9 +54,10 @@ function ProductCard() {
         <Image src="/jacket.jpg" width={300} height={400} alt="jacket" />
         <div className="cart-content">
           <div className="sizeBox">
-            <div className="size">SX</div>
-            <div className="size">SX</div> <div className="size">SX</div>
-            <div className="size">SX</div>
+            <Size>SX</Size>
+            <Size>SX</Size>
+            <Size>SX</Size>
+            <Size>SX</Size>
           </div>
         </div>
       </div>
