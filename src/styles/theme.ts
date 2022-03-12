@@ -13,6 +13,9 @@ const theme = createTheme({
       main: '#000000',
       light: '#222831',
     },
+    neutral: {
+      main: '#900048',
+    },
   },
 });
 declare module '@mui/material/styles' {
@@ -26,6 +29,9 @@ declare module '@mui/material/styles' {
         main?: string;
         light?: string;
       };
+      neutral?: {
+        main?: string;
+      };
     };
   }
   // allow configuration using `createTheme`
@@ -38,6 +44,9 @@ declare module '@mui/material/styles' {
       secondary?: {
         main?: string;
         light?: string;
+      };
+      neutral?: {
+        main?: string;
       };
     };
   }

@@ -24,7 +24,7 @@ const CardStyled = styled.div<{ theme?: Theme }>`
   max-width: 100%;
   .imgBox {
     width: 100%;
-    height: 400px;
+    height: 350px;
     position: relative;
     cursor: pointer;
     overflow: hidden;
@@ -71,13 +71,15 @@ function ProductCard() {
             <Size>SX</Size>
             <Size>SX</Size>
           </div>
-          <Button width="100%">Add To Cart</Button>
+          <Button width="100%" category="black">
+            Add To Cart
+          </Button>
         </div>
       </div>
 
-      <Box>
+      <Box sx={{ marginTop: 1 }}>
         <Typography sx={{ fontWeight: 'bolder' }}>
-          WHERE SELF MADE IS MADE
+          Lorem ipsum dolor sit, amet Repudiandae
         </Typography>
         <Typography>$70</Typography>
       </Box>
