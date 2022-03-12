@@ -47,7 +47,7 @@ const Home = () => (
     <GridImage items={itemData} />
     <Careusol
       show={4}
-      cards={['', '', '', ''].map((item, i) => (
+      cards={['', '', '', '', '', ''].map((item, i) => (
         <ProductCard key={i} />
       ))}
     />
