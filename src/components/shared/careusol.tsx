@@ -12,6 +12,7 @@ const Wrap = styled(Box)`
   padding: 100px 0;
   display: flex;
   align-items: center;
+  overflow: hidden;
 `;
 
 function Careusol({ show, cards }: Props) {
@@ -20,14 +21,13 @@ function Careusol({ show, cards }: Props) {
   //   useEffect(() => {
   //     alert(show);
   //   }, []);
+  const [items, setitems] = useState(cards);
 
   const handleNext = () => {
-    if (start > 0) {
+    if (start > cards.length) {
       setStart(1);
-      setEnd(show);
     } else {
-      setStart(() => end + show);
-      setEnd(() => end + show);
+      setStart(() => start + 1);
     }
   };
   const handlePrevious = () => {
@@ -44,7 +44,9 @@ function Careusol({ show, cards }: Props) {
         <Button onClick={handleNext}>Next</Button>
       </div>
       <Stack direction="row" spacing={2}>
-        {cards.map((card) => card)}
+        {cards.map((card, i) => {
+          if (i >= start) return card;
+        })}
       </Stack>
     </Wrap>
   );
