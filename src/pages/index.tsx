@@ -5,6 +5,7 @@ import InfoCard from '../components/shared/infoCard';
 import Main from '../layout/main';
 import adDB from '../../database/ad.json';
 import ProductCard from '../components/shared/productCard';
+import Careusol from '../components/shared/careusol';
 
 const images = ['/jacket.jpg', 'suit.jpg', 'womansuit.jpg', 'mansuit.jpg'];
 const itemData = [
@@ -44,22 +45,12 @@ const Home = () => (
     </Container>
 
     <GridImage items={itemData} />
-    <Container sx={{ paddingY: { xs: '50px', md: '100px' } }}>
-      <Grid container spacing={2} justifyContent="center" alignItems="center">
-        <Grid item xs={12} sm={6} md={3}>
-          <ProductCard />
-        </Grid>
-        <Grid item xs={12} sm={6} md={3}>
-          <ProductCard />
-        </Grid>
-        <Grid item xs={12} sm={6} md={3}>
-          <ProductCard />
-        </Grid>
-        <Grid item xs={12} sm={6} md={3}>
-          <ProductCard />
-        </Grid>
-      </Grid>
-    </Container>
+    <Careusol
+      show={5}
+      cards={['', '', '', '', '', '', '', '', '', '', '', ''].map((item, i) => (
+        <ProductCard key={i} />
+      ))}
+    />
   </Main>
 );
 
