@@ -18,17 +18,14 @@ const Wrap = styled(Box)`
 function Careusol({ show, cards }: Props) {
   const [start, setStart] = useState(1);
   const [end, setEnd] = useState(show);
-  //   useEffect(() => {
-  //     alert(show);
-  //   }, []);
+
   const [items, setitems] = useState(cards);
 
   const handleNext = () => {
-    if (start > cards.length) {
-      setStart(1);
-    } else {
-      setStart(() => start + 1);
-    }
+   const first_child = items[0]
+   const left = items.shift()
+   console.log(left)
+   setitems([first_child])
   };
   const handlePrevious = () => {
     if (start > 0) {
