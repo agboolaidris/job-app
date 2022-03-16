@@ -24,11 +24,7 @@ function Careusol({ show, cards }: Props) {
   const [items, setitems] = useState(cards);
 
   const handleNext = () => {
-    if (start > cards.length) {
-      setStart(1);
-    } else {
-      setStart(() => start + 1);
-    }
+   
   };
   const handlePrevious = () => {
     if (start > 0) {
