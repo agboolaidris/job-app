@@ -59,17 +59,22 @@ const CardStyled = styled.div<{ theme?: Theme }>`
     }
   }
 `;
-function ProductCard() {
+interface Props {
+  sizes?: string[];
+  img: string;
+  content: string;
+  price: number;
+}
+function ProductCard({ sizes, img, content, price }: Props) {
   return (
     <CardStyled>
       <div className="imgBox">
-        <Image src="/jacket.jpg" layout="fill" alt="jacket" />
+        <Image src={img} layout="fill" alt={content} />
         <div className="cart-content">
           <div className="sizeBox">
-            <Size>SX</Size>
-            <Size>SX</Size>
-            <Size>SX</Size>
-            <Size>SX</Size>
+            {sizes.map((size, i) => (
+              <Size key={i}>{size}</Size>
+            ))}
           </div>
           <Button width="100%" category="black">
             Add To Cart
@@ -78,10 +83,8 @@ function ProductCard() {
       </div>
 
       <Box sx={{ marginTop: 1 }}>
-        <Typography sx={{ fontWeight: 'bolder' }}>
-          Lorem ipsum dolor sit, amet Repudiandae
-        </Typography>
-        <Typography>$70</Typography>
+        <Typography sx={{ fontWeight: 'bolder' }}>{content}</Typography>
+        <Typography>${price}</Typography>
       </Box>
     </CardStyled>
   );

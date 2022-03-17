@@ -1,5 +1,5 @@
-import React, { ReactNode, useEffect, useState } from 'react';
-import { Container, Box, Stack } from '@mui/material';
+import React, { ReactNode, useState } from 'react';
+import { Box, Stack } from '@mui/material';
 import styled from '@emotion/styled';
 import Button from './button';
 
@@ -25,7 +25,6 @@ function Careusol({ show, cards }: Props) {
     const res = items.filter((item, i) => {
       if (i !== 0) return item;
     });
-
     setitems([...res, items[0]]);
   };
   const handlePrevious = () => {
@@ -42,9 +41,7 @@ function Careusol({ show, cards }: Props) {
         <Button onClick={handleNext}>Next</Button>
       </div>
       <Stack direction="row" spacing={2}>
-        {items.map((card, i) => {
-          if (i >= start) return card;
-        })}
+        {items.map((card) => card)}
       </Stack>
     </Wrap>
   );
