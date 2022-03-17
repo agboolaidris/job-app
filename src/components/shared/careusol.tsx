@@ -1,24 +1,28 @@
 import React, { ReactNode, useState } from 'react';
-import { Box, Stack } from '@mui/material';
+import { Box, Stack, Theme } from '@mui/material';
 import styled from '@emotion/styled';
 import Button from './button';
 
 interface Props {
   cards: ReactNode[];
-  show?: number;
 }
 
-const Wrap = styled(Box)`
+const Wrap = styled(Box)<{ theme?: Theme }>`
   padding: 100px 0;
   display: flex;
   align-items: center;
   overflow: hidden;
+  ${({ theme }) => theme.breakpoints.down('md')} {
+    flex-direction: column-reverse;
+  }
+  .button {
+    width: max-content;
+    background: red;
+    display: flex;
+  }
 `;
 
-function Careusol({ show, cards }: Props) {
-  const [start, setStart] = useState(1);
-  const [end, setEnd] = useState(show);
-
+function Careusol({ cards }: Props) {
   const [items, setitems] = useState(cards);
 
   const handleNext = () => {
@@ -28,15 +32,15 @@ function Careusol({ show, cards }: Props) {
     setitems([...res, items[0]]);
   };
   const handlePrevious = () => {
-    if (start > 0) {
-      setStart(() => end - show);
-      setEnd(() => end - show);
-    }
+    const res = items.filter((item, i) => {
+      if (i !== items.length - 1) return item;
+    });
+    setitems([items[items.length - 1], ...res]);
   };
 
   return (
     <Wrap>
-      <div className="Button">
+      <div className="button">
         <Button onClick={handlePrevious}>Previous</Button>
         <Button onClick={handleNext}>Next</Button>
       </div>
