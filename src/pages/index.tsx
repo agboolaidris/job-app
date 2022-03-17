@@ -6,6 +6,7 @@ import Main from '../layout/main';
 import adDB from '../../database/ad.json';
 import ProductCard from '../components/shared/productCard';
 import Careusol from '../components/shared/careusol';
+import productDB from '../../database/products.json';
 
 const images = ['/jacket.jpg', 'suit.jpg', 'womansuit.jpg', 'mansuit.jpg'];
 const itemData = [
@@ -46,9 +47,14 @@ const Home = () => (
 
     <GridImage items={itemData} />
     <Careusol
-      show={5}
-      cards={['', '', '', '', '', '', '', '', '', '', '', ''].map((item, i) => (
-        <ProductCard key={i} />
+      cards={productDB.map((product, i) => (
+        <ProductCard
+          key={i}
+          img={product.img}
+          content={product.content}
+          sizes={product.sizes}
+          price={product.price}
+        />
       ))}
     />
   </Main>

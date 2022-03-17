@@ -1,0 +1,56 @@
+[
+  {
+    "img": "/jacket.jpg",
+    "sizes": ["XS", "SM", "MD", "LG", "XL"],
+    "content": "made to measure lorem sbb vvxvx bbsbvvx vvxv",
+    "price": 80
+  },
+  {
+    "img": "/suit.jpg",
+    "sizes": ["XS", "SM", "MD", "LG", "XL"],
+    "content": "made to measure lorem sbb vvxvx bbsbvvx vvxv",
+    "price": 70
+  },
+  {
+    "img": "/mansuit.jpg",
+    "sizes": ["XS", "SM", "MD", "LG", "XL"],
+    "content": "made to measure lorem sbb vvxvx bbsbvvx vvxv",
+    "price": 90.5
+  },
+  {
+    "img": "/jacket.jpg",
+    "sizes": ["XS", "SM", "MD", "LG", "XL"],
+    "content": "made to measure lorem sbb vvxvx bbsbvvx vvxv",
+    "price": 80
+  },
+  {
+    "img": "/suit.jpg",
+    "sizes": ["XS", "SM", "MD", "LG", "XL"],
+    "content": "made to measure lorem sbb vvxvx bbsbvvx vvxv",
+    "price": 70
+  },
+  {
+    "img": "/mansuit.jpg",
+    "sizes": ["XS", "SM", "MD", "LG", "XL"],
+    "content": "made to measure lorem sbb vvxvx bbsbvvx vvxv",
+    "price": 90.5
+  },
+  {
+    "img": "/jacket.jpg",
+    "sizes": ["XS", "SM", "MD", "LG", "XL"],
+    "content": "made to measure lorem sbb vvxvx bbsbvvx vvxv",
+    "price": 80
+  },
+  {
+    "img": "/suit.jpg",
+    "sizes": ["XS", "SM", "MD", "LG", "XL"],
+    "content": "made to measure lorem sbb vvxvx bbsbvvx vvxv",
+    "price": 70
+  },
+  {
+    "img": "/mansuit.jpg",
+    "sizes": ["XS", "SM", "MD", "LG", "XL"],
+    "content": "made to measure lorem sbb vvxvx bbsbvvx vvxv",
+    "price": 90.5
+  }
+]
