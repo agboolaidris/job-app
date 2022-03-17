@@ -12,13 +12,14 @@ const Wrap = styled(Box)<{ theme?: Theme }>`
   display: flex;
   align-items: center;
   overflow: hidden;
+  padding: 30px;
   ${({ theme }) => theme.breakpoints.down('md')} {
     flex-direction: column-reverse;
   }
   .button {
     width: max-content;
-    background: red;
     display: flex;
+    padding-right: 10px;
   }
 `;
 
