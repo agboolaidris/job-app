@@ -22,12 +22,11 @@ function Careusol({ show, cards }: Props) {
   const [items, setitems] = useState(cards);
 
   const handleNext = () => {
-    console.log(items.length);
-    const res = items.map((item, i) => {
+    const res = items.filter((item, i) => {
       if (i !== 0) return item;
     });
-    console.log(res.length);
-    setitems(res);
+
+    setitems([...res, items[0]]);
   };
   const handlePrevious = () => {
     if (start > 0) {
