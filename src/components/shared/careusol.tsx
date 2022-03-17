@@ -22,10 +22,12 @@ function Careusol({ show, cards }: Props) {
   const [items, setitems] = useState(cards);
 
   const handleNext = () => {
-   const first_child = items[0]
-   const left = items.shift()
-   console.log(left)
-   setitems([first_child])
+    console.log(items.length);
+    const res = items.map((item, i) => {
+      if (i !== 0) return item;
+    });
+    console.log(res.length);
+    setitems(res);
   };
   const handlePrevious = () => {
     if (start > 0) {
@@ -41,7 +43,7 @@ function Careusol({ show, cards }: Props) {
         <Button onClick={handleNext}>Next</Button>
       </div>
       <Stack direction="row" spacing={2}>
-        {cards.map((card, i) => {
+        {items.map((card, i) => {
           if (i >= start) return card;
         })}
       </Stack>
