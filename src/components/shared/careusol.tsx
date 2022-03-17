@@ -16,9 +16,6 @@ const Wrap = styled.div<{ theme?: Theme }>`
   overflow: hidden;
   padding: 30px;
   width: 100%;
-  ${({ theme }) => theme.breakpoints.down('md')} {
-    flex-direction: column;
-  }
   .side {
     padding: 0px 10px;
     width: 100%;
@@ -26,6 +23,21 @@ const Wrap = styled.div<{ theme?: Theme }>`
       padding: 80px 0;
       display: flex;
       justify-content: center;
+    }
+  }
+  ${({ theme }) => theme.breakpoints.down('md')} {
+    flex-direction: column;
+    .side {
+      padding: 10px 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .button {
+        padding: 0;
+        display: flex;
+        justify-content: center;
+      }
     }
   }
 `;
@@ -49,7 +61,9 @@ function Careusol({ cards }: Props) {
   return (
     <Wrap>
       <div className="side">
-        <Typography variant="h4" sx={{ width: 'max-content' }}>
+        <Typography
+          sx={{ width: 'max-content', fontSize: { xs: '20px', md: '40px' } }}
+        >
           Our Top Pick
         </Typography>
         <div className="button">
