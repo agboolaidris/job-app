@@ -1,5 +1,5 @@
 import React, { ReactNode, useState } from 'react';
-import { Box, Stack, Theme, Typography } from '@mui/material';
+import { Stack, Theme, Typography } from '@mui/material';
 import styled from '@emotion/styled';
 import Button from './button';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIos';
