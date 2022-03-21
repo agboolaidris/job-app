@@ -7,6 +7,7 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 interface Props {
   cards: ReactNode[];
+  title: string;
 }
 
 const Wrap = styled.div<{ theme?: Theme }>`
@@ -14,7 +15,6 @@ const Wrap = styled.div<{ theme?: Theme }>`
   display: flex;
   align-items: flex-end;
   overflow: hidden;
-  padding: 30px;
   width: 100%;
   .side {
     padding: 0px 10px;
@@ -42,7 +42,7 @@ const Wrap = styled.div<{ theme?: Theme }>`
   }
 `;
 
-function Careusol({ cards }: Props) {
+function Careusol({ cards, title }: Props) {
   const [items, setitems] = useState(cards);
 
   const handleNext = () => {
@@ -64,7 +64,7 @@ function Careusol({ cards }: Props) {
         <Typography
           sx={{ width: 'max-content', fontSize: { xs: '20px', md: '40px' } }}
         >
-          Our Top Pick
+          {title}
         </Typography>
         <div className="button">
           <Button onClick={handlePrevious}>

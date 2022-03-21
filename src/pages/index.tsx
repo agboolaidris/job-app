@@ -44,9 +44,23 @@ const Home = () => (
         ))}
       </Grid>
     </Container>
+    <Careusol
+      title="New Arrival"
+      cards={productDB.map((product, i) => (
+        <ProductCard
+          key={i}
+          img={product.img}
+          content={product.content}
+          sizes={product.sizes}
+          price={product.price}
+        />
+      ))}
+    />
 
     <GridImage items={itemData} />
+
     <Careusol
+      title="Our Top Picks"
       cards={productDB.map((product, i) => (
         <ProductCard
           key={i}
