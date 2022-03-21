@@ -6,7 +6,7 @@ import { Theme } from '@mui/material';
 interface Props {
   theme?: Theme;
   width?: string;
-  category?: 'black';
+  category?: 'black' | 'white';
 }
 
 const Button = styled.button<Props>`
@@ -26,6 +26,17 @@ const Button = styled.button<Props>`
     css`
       background: ${theme.colors.secondary.main};
       color: ${theme.colors.primary.main};
+      border: none;
+      &:hover {
+        background: ${theme.colors.neutral.main};
+        color: ${theme.colors.primary.main};
+      }
+    `}
+  ${({ category, theme }) =>
+    category == 'white' &&
+    css`
+      background: ${theme.colors.primary.main};
+      color: ${theme.colors.secondary.main};
       border: none;
       &:hover {
         background: ${theme.colors.neutral.main};
