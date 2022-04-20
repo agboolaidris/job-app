@@ -9,11 +9,14 @@
     "test:ci": "jest --ci"
   },
   "dependencies": {
+    "@chec/commerce.js": "^2.8.0",
     "@emotion/react": "^11.5.0",
     "@emotion/server": "^11.4.0",
     "@emotion/styled": "^11.3.0",
     "@mui/icons-material": "^5.0.5",
     "@mui/material": "^5.0.6",
+    "@stripe/react-stripe-js": "^1.7.2",
+    "@stripe/stripe-js": "^1.27.0",
     "eslint-typescript": "^1.1.0",
     "next": "latest",
     "react": "^17.0.2",

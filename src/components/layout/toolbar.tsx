@@ -3,11 +3,11 @@ import { Box, Theme, Badge } from '@mui/material';
 import styled from '@emotion/styled';
 import {
   Menu,
-  MenuItemDesktop,
   MenuItemMobile,
   MenuItemMobileStyled,
+  CurrencyDropDown,
+  DropDown,
 } from './navItem';
-import { CurrencyDropDown } from '../shared/currencydropdown';
 import { Link } from '../shared/link';
 import categoriesDB from '../../../database/category.json';
 import { BarIcon, TimesIcon } from '../shared/bar';
@@ -62,18 +62,7 @@ function Index() {
         {openMobileMenu ? <TimesIcon /> : <BarIcon />}
       </Box>
 
-      <Menu sx={{ display: { xs: 'none', md: 'flex' } }}>
-        {categoriesDB.map((category, i) => (
-          <MenuItemDesktop
-            key={i}
-            name={category.name}
-            categories={category.categories}
-            brands={category.brands}
-            trends={category.trends}
-            popular_products={category.popular_product}
-          />
-        ))}
-      </Menu>
+      <Menu sx={{ display: { xs: 'none', md: 'flex' } }}></Menu>
 
       <Link href="/">
         <span className="logo">_IRIS_</span>
