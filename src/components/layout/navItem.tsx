@@ -225,7 +225,7 @@ export const DropDown = ({ data, path, title }: DownMenuProps) => {
         <ul>
           {data.map((d, i) => (
             <li key={i} onClick={() => close()}>
-              <Link href={path}>
+              <Link href={`${path}?filter=${d}`}>
                 <span>{d}</span>
               </Link>
             </li>

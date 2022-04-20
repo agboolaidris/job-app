@@ -65,7 +65,7 @@ function Index() {
 
       <Menu sx={{ display: { xs: 'none', md: 'flex' } }}>
         {categoriesDB.map(({ data, name }, i) => (
-          <DropDown data={data} title={name} key={i} path="/" />
+          <DropDown data={data} title={name} key={i} path="/products" />
         ))}
       </Menu>
 
