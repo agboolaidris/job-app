@@ -5,6 +5,7 @@ import { Box, Theme, Typography, useTheme } from '@mui/material';
 
 const Wrap = styled(Box)<{ theme?: Theme }>`
   width: 300px;
+  margin: 0 auto;
   max-width: 100%;
   display: flex;
   justify-content: center;

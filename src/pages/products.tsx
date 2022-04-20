@@ -1,8 +1,13 @@
 import React from 'react';
 import Main from '../layout/main';
+import Products from '../components/product';
 
-function Product() {
-  return <Main>Pages</Main>;
+function Index() {
+  return (
+    <Main>
+      <Products />
+    </Main>
+  );
 }
 
-export default Product;
+export default Index;

@@ -36,7 +36,7 @@ const Home = () => (
     <Welcome images={images} />
 
     <Container sx={{ paddingY: { xs: '50px', md: '100px' } }}>
-      <Grid container spacing={2} justifyContent="center" alignItems="center">
+      <Grid container spacing={2} justifyContent="center">
         {adDB.map((ad, i) => (
           <Grid item xs={12} sm={6} md={3} key={i}>
             <InfoCard title={ad.title} content={ad.content} img={ad.img} />

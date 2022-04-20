@@ -34,12 +34,12 @@ function Welcome({ images }: Props) {
           spacing={2}
           justifyContent="center"
         >
-          <Link href="/job">
+          <Link href="/products?filter=men">
             <Button category="white" width="200px">
               shop Men
             </Button>
           </Link>
-          <Link href="/job">
+          <Link href="/product?=women">
             <Button category="white" width="200px">
               shop Women
             </Button>
