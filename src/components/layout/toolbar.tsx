@@ -51,6 +51,7 @@ function Index() {
       symbol: 'E',
     },
   ];
+
   const [openMobileMenu, setopenMobileMenu] = useState(false);
 
   return (
@@ -62,7 +63,11 @@ function Index() {
         {openMobileMenu ? <TimesIcon /> : <BarIcon />}
       </Box>
 
-      <Menu sx={{ display: { xs: 'none', md: 'flex' } }}></Menu>
+      <Menu sx={{ display: { xs: 'none', md: 'flex' } }}>
+        {categoriesDB.map(({ data, name }, i) => (
+          <DropDown data={data} title={name} key={i} path="/" />
+        ))}
+      </Menu>
 
       <Link href="/">
         <span className="logo">_IRIS_</span>
@@ -83,20 +88,10 @@ function Index() {
         </Badge>
       </Link>
       <Menu open={openMobileMenu} sx={{ display: { md: 'none' } }}>
-        {categoriesDB.map((category, i) => {
+        {categoriesDB.map(({ name, data }, i) => {
           return (
-            <MenuItemMobile name={category.name} key={i}>
-              {category?.trends?.map((s, i) => (
-                <Link href="/" sx={{ display: 'block', marginY: 2 }} key={i}>
-                  {s}
-                </Link>
-              ))}
-              {category?.categories?.map((s, i) => (
-                <Link href="/" sx={{ display: 'block', marginY: 2 }} key={i}>
-                  {s}
-                </Link>
-              ))}
-              {category?.brands?.map((s, i) => (
+            <MenuItemMobile name={name} key={i}>
+              {data?.map((s, i) => (
                 <Link href="/" sx={{ display: 'block', marginY: 2 }} key={i}>
                   {s}
                 </Link>

@@ -57,7 +57,7 @@ const MenuItemDropDown = styled.div<{ open: boolean; theme?: Theme }>`
 `;
 
 interface DropDownMenuProps {
-  currencies: { unit: string; name: string; symbol: string }[];
+  currencies: { unit: string; name: string; symbol?: string }[];
 }
 export const CurrencyDropDown = ({ currencies }: DropDownMenuProps) => {
   const [expanded, setExpanded] = useState(false);
