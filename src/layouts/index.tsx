@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import { categories } from 'src/lib/categories';
 
+import { BottomNavigation } from './commons/BottomNavigation';
 import { ScrollTabs } from './commons/ScrollTabs';
 import { TopNavigation } from './commons/TopNavigation';
 
@@ -19,8 +20,9 @@ export const Layout = ({ children }: Props) => {
           </div>
         </div>
       </div>
+
       <div className="mt-40">{children}</div>
-      <footer>footer</footer>
+      <BottomNavigation />
     </div>
   );
 };
