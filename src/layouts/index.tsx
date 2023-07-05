@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
-import { ScrollTabs } from '@ui/scroll-tabs';
+import { categories } from 'src/lib/categories';
 
+import { ScrollTabs } from './commons/ScrollTabs';
 import { TopNavigation } from './commons/TopNavigation';
 
 type Props = {
@@ -14,7 +15,7 @@ export const Layout = ({ children }: Props) => {
         <TopNavigation />
         <div className="">
           <div className="mx-auto max-w-7xl px-6">
-            <ScrollTabs />
+            <ScrollTabs href="" tabs={categories} />
           </div>
         </div>
       </div>
