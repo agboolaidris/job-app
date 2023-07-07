@@ -1,13 +1,14 @@
 import { ReactElement, useState } from 'react';
-import { PropertyCard } from '@ui/property-card';
+import { HomeCard } from '@ui/home-card';
 import Head from 'next/head';
 import { Layout } from 'src/layouts';
-import { properties } from 'src/lib/properties';
+import { homes } from 'src/lib/homes';
 
 import { NextPageWithLayout } from './_app';
 
 const Home: NextPageWithLayout = () => {
   const [wishList, setWishList] = useState<string[]>([]);
+
   const handleAddToFavorite = (id: string) => {
     setWishList((prev) => {
       if (!prev.includes(id)) {
@@ -17,6 +18,7 @@ const Home: NextPageWithLayout = () => {
       return prev.filter((p) => p !== id);
     });
   };
+
   return (
     <>
       <Head>
@@ -27,15 +29,15 @@ const Home: NextPageWithLayout = () => {
       </Head>
       <main className="mx-auto max-w-7xl px-4 xl:px-0">
         <div className="bg-white">
-          <div className="mx-auto max-w-7xl px-4 xl:px-0">
+          <div className="wrapper">
             <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-              {properties.map((property, propertyIdx) => {
+              {homes.map((home, homeIdx) => {
                 return (
-                  <PropertyCard
-                    key={propertyIdx}
-                    {...property}
+                  <HomeCard
+                    key={homeIdx}
+                    {...home}
                     addToFavorite={handleAddToFavorite}
-                    isFavorite={wishList.indexOf(property.id) !== -1}
+                    isFavorite={wishList.indexOf(home.id) !== -1}
                   />
                 );
               })}
