@@ -1,4 +1,6 @@
 import { ReactElement, useState } from 'react';
+import { HiMap } from 'react-icons/hi2';
+import { Button } from '@ui/buttons';
 import { HomeCard } from '@ui/home-card';
 import Head from 'next/head';
 import { Layout } from 'src/layouts';
@@ -43,6 +45,12 @@ const Home: NextPageWithLayout = () => {
               })}
             </div>
           </div>
+        </div>
+
+        <div className="fixed left-1/2 bottom-0  z-30 mb-20 hidden -translate-x-1/2 lg:block">
+          <Button className="flex items-center gap-x-2 rounded-full px-3 text-sm">
+            Show Map <HiMap />
+          </Button>
         </div>
       </main>
     </>
